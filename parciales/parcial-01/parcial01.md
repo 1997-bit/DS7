@@ -1,8 +1,3 @@
-## Lógica de Excepciones Básicas
-
-- `if (mana > requisitos_de_ataque)`: Verificar recursos antes de ejecutar una acción.
-- `if (vida >= 0)`: Control del estado de supervivencia.
-
 ## Posibles mejoras
 
 Subir de nivel si el jugador realiza ataques críticos.

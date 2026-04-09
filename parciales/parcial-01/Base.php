@@ -3,13 +3,13 @@
         protected $nombre;
         protected $vida;
         protected $mana;
-        protected $inventario; // esto es un arreglo btw
+        protected $habilidades; 
 
-        public function __construct($nombre,$vida,$mana, $inventario=[]){
+        public function __construct($nombre,$vida,$mana, $habilidades=[]){
             $this->nombre = $nombre;
             $this->vida = $vida;
             $this->mana = $mana;
-            $this->inventario = $inventario; // Pa inicializar vacio 
+            $this->habilidades = $habilidades; // Pa inicializar vacio 
         }
         
         public function getVida(){
