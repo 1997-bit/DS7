@@ -2,9 +2,9 @@
 
 [Interface.php](Interface.php) será la interfaz que heredará el método calcularDanio() a DanioFijo.php y DanioCritico.php.
 
-[DañoFijo.php](DanioFijo.php) Daño recibido desde la habilidad y se retorna sin modificación.
+[DañoFijo.php](DañoFijo.php) Daño recibido desde la habilidad y se retorna sin modificación.
 
-[DanioAleatorio.php](DanioAleatorio.php) debe generar un valor aleatorio (por ejemplo entre 0 y 1) para decidir si el ataque es crítico. Si el ataque es crítico, el daño debe multiplicarse por 1.5; de lo contrario, debe devolver el daño base.
+[DanioAleatorio.php](DañoAleatorio.php) debe generar un valor aleatorio (por ejemplo entre 0 y 1) para decidir si el ataque es crítico. Si el ataque es crítico, el daño debe multiplicarse por 1.5; de lo contrario, debe devolver el daño base.
 
 [Personaje.php](Personaje.php) será la clase para crear todos los personajes so el ogro y Gandalf . Los atributos básicos que debe tener son: nombre, vida, mana y habilidades[]. Los métodos estaVivo(), usarHabilidad(), aprenderHabilidad() y recibirDanio().
 
