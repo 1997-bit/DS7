@@ -31,5 +31,31 @@
             return $this->mana;
         }
 
+        //Metodo usarHabilidad()
+        public function usarHabilidad(string $nombreHab, Personaje $objetivo) {
+            if (!isset($this->habilidades[$nombreHab])) {
+                throw new Exception("Error: El personaje no conoce la habilidad '$nombreHab'.");
+            }
+
+            $habilidad = $this->habilidades[$nombreHab];
+
+            // 2. Validar mana suficiente [1]
+            if ($this->mana < $habilidad->getCosteMana()) {
+                throw new Exception("Error: Mana insuficiente para usar " . $habilidad->getNombre() . ".");
+            }
+
+            $this->mana -= $habilidad->getCosteMana();
+
+            $danio = $habilidad->calcularDanio();
+            $objetivo->recibirDanio($danio);
+        }
+
+
+
+        //Metodo aprenderHabilidad() o agregarHabilidad() al personaje
+        public function aprenderHabilidad(Habilidad $habilidad) {
+            $this->habilidades[$habilidad->getNombre()] = $habilidad;
+            echo "- {$this->nombre} aprendió: " . $habilidad->getNombre() . "<br>";
+        }
     }
 ?>
