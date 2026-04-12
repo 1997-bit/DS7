@@ -7,14 +7,16 @@
         que será el encargado de delegar el cálculo del daño a la clase correspondiente.
 
         */
-        protected $nombre
-        protected $costoMana
-        protected $dañoBase
+        protected $nombre;
+        protected $costoMana;
+        protected $dañoBase;
+        protected $tipoDaño;
         
-        public function __construct($nombre, $costoMana, $dañoBase){
+        public function __construct($nombre, $costoMana, $dañoBase, $tipoDaño){
             $this->nombre=$nombre;
             $this->costoMana=$costoMana;
             $this->dañoBase=$dañoBase;
+            $this->tipoDaño=$tipoDaño;
         }
 
         public function getNombre(){
