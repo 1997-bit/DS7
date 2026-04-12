@@ -31,5 +31,9 @@
             return $this->dañoBase;
         }
 
+        public function calcularDaño(){
+        return $this->tipoDaño->calcularDaño($this->dañoBase);
+        }
+
     }
 ?>

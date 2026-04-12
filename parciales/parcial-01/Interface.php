@@ -4,6 +4,6 @@
         Interface.php será la interfaz que heredará el método calcularDaño() 
         a DañoFijo.php y DanioCritico.php.
         */
-        public function calcularDaño();
+        public function calcularDaño($daño);
     }
 ?>

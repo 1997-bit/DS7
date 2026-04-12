@@ -1,4 +1,8 @@
 <?php
+    require_once 'DañoFijo.php';
+    require_once 'Habilidad.php';
+
+
     class Personaje {
 
         /* Estrategia
@@ -54,5 +58,24 @@
             $this->habilidades[$habilidad->getNombre()] = $habilidad;
             echo "- {$this->nombre} aprendió: " . $habilidad->getNombre() . "<br>";
         }
+
+        public function recibirdaño($daño){
+            
+        
+            $this->vida -=$daño;
+            if($this->vida < 0){
+                $this->vida = 0;
+            }
+            echo "{$this->nombre} ha recivido $daño de daño <br> {$this->vida} restante.<br>";
+
+            if(!$this->estavivo()){
+                echo "{$this->nombre} ha sido asesinado...<br>";
+            }
+            
+        }
+
+        public function estavivo(){
+                return $this->vida>0;
+            }
     }
 ?>
