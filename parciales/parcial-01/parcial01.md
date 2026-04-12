@@ -39,6 +39,8 @@ Subir de nivel si el jugador realiza ataques críticos.
 
 1. ¿Qué pasa si quiero que los ataques ya no tengan posibilidad de crítico de aquí en adelante?
 2. ¿Cómo aumentar las posibilidades de crítico de forma global o individual?
+3. ¿Por qué [interDaño](Interface.php) en vez de clase abstracta?
+4. ¿Qué pasa si usás habilidad sin mana?
 
 ## UML
 
