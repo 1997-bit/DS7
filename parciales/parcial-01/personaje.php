@@ -43,11 +43,11 @@
             $habilidad = $this->habilidades[$nombreHab];
 
             // 2. Validar mana suficiente [1]
-            if ($this->mana < $habilidad->getCosteMana()) {
+            if ($this->mana < $habilidad->getCostoMana()) {
                 throw new Exception("Error: Mana insuficiente para usar " . $habilidad->getNombre() . ".");
             }
 
-            $this->mana -= $habilidad->getCosteMana();
+            $this->mana -= $habilidad->getCostoMana();
 
             $daño = $habilidad->calcularDaño();
             $objetivo->recibirDaño($daño);

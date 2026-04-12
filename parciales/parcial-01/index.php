@@ -14,11 +14,11 @@
         $fijo = new DañoFijo();
         $critico = new DañoAleatorio();
 
-        $bolaFuego = new Habilidad("Bola de Fuego", 20, 50, $fijo);
-        $rayo = new Habilidad("Rayo Divino", 30, 60, $critico);
+        $bolaFuego = new Habilidad("Bola de Fuego", 10, 50, $fijo);
+        $rayo = new Habilidad("Rayo Divino", 12, 60, $critico);
 
         $gandalf = new Personaje("Gandalf", 100, 80);
-        $orco = new Personaje("Orco", 150, 0);
+        $orco = new Personaje("Orco", 540, 0);
 
         $gandalf->aprenderHabilidad($bolaFuego);
         $gandalf->aprenderHabilidad($rayo);
@@ -36,7 +36,7 @@
             }
 
             if ($orco->estaVivo()) {
-                $gandalf->recibirDano(15);
+                $gandalf->recibirDaño(23);
             }
 
             $turno++;
