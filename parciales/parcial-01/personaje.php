@@ -5,7 +5,7 @@
         Personaje.php será la clase para crear todos los personajes so el ogro y Gandalf . 
         Los atributos básicos que debe tener son: nombre, vida, mana y habilidades (arreglo). 
         Debe incluir como mínimo los métodos 
-        estaVivo(), usarHabilidad(), aprenderHabilidad() y recibirDanio().
+        estaVivo(), usarHabilidad(),  () y recibirDanio().
 
         */
         protected $nombre;
@@ -31,7 +31,6 @@
             return $this->mana;
         }
 
-        //Metodo usarHabilidad()
         public function usarHabilidad(string $nombreHab, Personaje $objetivo) {
             if (!isset($this->habilidades[$nombreHab])) {
                 throw new Exception("Error: El personaje no conoce la habilidad '$nombreHab'.");
@@ -46,13 +45,11 @@
 
             $this->mana -= $habilidad->getCosteMana();
 
-            $danio = $habilidad->calcularDanio();
-            $objetivo->recibirDanio($danio);
+            $daño = $habilidad->calcularDaño();
+            $objetivo->recibirDaño($daño);
         }
 
 
-
-        //Metodo aprenderHabilidad() o agregarHabilidad() al personaje
         public function aprenderHabilidad(Habilidad $habilidad) {
             $this->habilidades[$habilidad->getNombre()] = $habilidad;
             echo "- {$this->nombre} aprendió: " . $habilidad->getNombre() . "<br>";

@@ -36,7 +36,7 @@
             }
 
             if ($orco->estaVivo()) {
-                $gandalf->recibirDanio(15);
+                $gandalf->recibirDano(15);
             }
 
             $turno++;
