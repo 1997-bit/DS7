@@ -18,7 +18,7 @@
         $rayo = new Habilidad("Rayo Divino", 12, 60, $critico);
 
         $gandalf = new Personaje("Gandalf", 100, 80);
-        $orco = new Personaje("Orco", 540, 0);
+        $orco = new Personaje("Orco", 40, 0);
 
         $gandalf->aprenderHabilidad($bolaFuego);
         $gandalf->aprenderHabilidad($rayo);
