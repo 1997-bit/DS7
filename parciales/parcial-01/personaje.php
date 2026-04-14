@@ -83,7 +83,7 @@ class Personaje
         if ($this->vida < 0) {
             $this->vida = 0;
         }
-        echo "{$this->nombre} ha recibido $daño de daño <br> {$this->vida} restante.<br>";
+        echo "{$this->nombre} ha recibido $daño de daño <br> vida: {$this->vida} restante.<br>";
 
         if (!$this->estavivo()) {
             echo "{$this->nombre} ha sido asesinado...<br>";

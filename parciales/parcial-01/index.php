@@ -4,25 +4,27 @@
     require_once 'DañoAleatorio.php';
     require_once 'Habilidad.php';
     require_once 'personaje.php';
+    require_once 'Random.php';
 
     //Index: Emulacion de combate con try catch incluido.
 
+    $random = new RandomPool();
     try {
         echo "<h1>🎮 Simulación de Combate RPG</h1>";
         echo "<h3>--- Fase de Preparación ---</h3>";
 
+
         $fijo = new DañoFijo();
         $critico = new DañoAleatorio();
 
-        $bolaFuego = new Habilidad("Bola de Fuego", 10, 50, $fijo);
-        $rayo = new Habilidad("Rayo Divino", 12, 60, $critico);
+        $bolaFuego = new Habilidad("Bola de Fuego", $random->rCostMana(), $random->rDaño(), $fijo);
+        $rayo = new Habilidad("Rayo Divino", $random->rCostMana(), $random->rdaño(), $critico);
 
-        $gandalf = new Personaje("Gandalf", 100, 80);
-        $orco = new Personaje("Orco", 40, 0);
+        $gandalf = new Personaje("P1", $random->rVida(), $random->rMana());
+        $orco = new Personaje("P2", $random->rVidaEne(),0);
 
         $gandalf->aprenderHabilidad($bolaFuego);
         $gandalf->aprenderHabilidad($rayo);
-
         echo "<br><h3>--- ¡COMIENZA EL COMBATE! ---</h3>";
 
         $turno = 1;
@@ -36,7 +38,7 @@
             }
 
             if ($orco->estaVivo()) {
-                $gandalf->recibirDaño(23);
+                $gandalf->recibirDaño($random->rDañoEne());
             }
 
             $turno++;
