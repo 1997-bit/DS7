@@ -29,10 +29,9 @@ public function __construct($nombre=null,$CorreoElectronico=null,$cedula=null,$e
     echo "</div>";
  }
 
- }
 
    public function calcularIMC($nombre,$peso,$altura) {
-      $imc = ($peso)/ ($altura * $altura)    
+      $imc = $peso / ($altura * $altura);
       if ($imc < 18.5) {
          $estado = "Bajo peso";
       } elseif ($imc < 25) {
@@ -41,11 +40,13 @@ public function __construct($nombre=null,$CorreoElectronico=null,$cedula=null,$e
          $estado = "Sobrepeso";
       } else {
          $estado = "Obesidad";
-      }     
+      }
+
       echo "Nombre: $nombre <br>";
       echo "IMC: ".round($imc,2)."<br>";
       echo "Estado: $estado <br>";
    }
+}
 ?>
 
 
