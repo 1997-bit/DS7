@@ -56,6 +56,17 @@
 
            }
 
+           #IrIMC {
+                 cursor: pointer;
+                 margin-left: 45px;
+                 margin-top: 10px;
+            }
+
+            #IrIMC:hover {
+                color: red;
+                background: #e6df08;
+            }
+
         </style>
 
 </head>
@@ -79,6 +90,8 @@
     <br>
     <br> 
     <input type="submit" value="Enviar" id="Enviar">
+    <input type="button" value="Ir a IMC" id="IrIMC" onclick="window.location.href='formularioG.php'">
+
     <br>
     </form>
 

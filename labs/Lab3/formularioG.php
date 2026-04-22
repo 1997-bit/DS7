@@ -11,6 +11,10 @@
     Altura (m):<br>
     <input type="number" name="altura" required><br><br>
     <input type="submit" value="Calcular IMC">
+    <input type="button" value="Regresar" id="IrConacto" onclick="window.location.href='formularioP.php'">
 
     </form>
+
+    </form>
+
 </body>
