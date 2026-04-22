@@ -11,40 +11,38 @@
 			body {
 				background-color: rgba(93, 81, 226, 0.73);
 				display: flex;
-				flex-direction: column;
-				align-items: center;
 				justify-content: center;
+				align-items: center;
 				height: 100vh;
-				font-family:
-					"Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-					"Lucida Sans", Arial, sans-serif;
+				font-family: "Trebuchet MS", Arial, sans-serif;
 			}
+
 			section {
 				background: rgba(15, 234, 15, 0.73);
 				padding: 30px;
 				border-radius: 15px;
 				box-shadow: 0 10px 25px rgba(37, 7, 136, 0.73);
-				width: 190px;
+				width: 220px;
 			}
+
+			form {
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+			}
+
 			input {
 				padding: 10px;
 				border: 3px solid #754404;
 				border-radius: 8px;
-				transition: 0.3s;
 			}
-			#Enviar {
-				cursor: pointer;
-				margin-left: 50px;
-			}
-			#Enviar:hover {
-				color: red;
-				background: #e6df08;
-			}
+
+			#Enviar,
 			#IrIMC {
 				cursor: pointer;
-				margin-left: 46px;
-				margin-top: 10px;
 			}
+
+			#Enviar:hover,
 			#IrIMC:hover {
 				color: red;
 				background: #e6df08;
@@ -61,9 +59,6 @@
 					placeholder="Ingrese su nombre"
 					required
 				/>
-				<br/>
-                <br/>
-
 				<input
 					type="number"
 					name="peso"
@@ -71,9 +66,6 @@
 					placeholder="Peso (kg)"
 					required
 				/>
-				<br/>
-                <br/>
-
 				<input
 					type="number"
 					name="altura"
@@ -81,15 +73,14 @@
 					placeholder="Altura (m)"
 					required
 				/>
-				<br/>
-                <br/>
 
 				<input type="submit" value="Calcular IMC" id="Enviar" />
+
 				<input
 					type="button"
 					value="Regresar"
 					id="IrIMC"
-					onclick="window.location.href = 'formularioP.php'"
+					onclick="location.href = 'formularioP.php'"
 				/>
 			</form>
 		</section>
