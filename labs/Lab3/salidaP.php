@@ -8,8 +8,6 @@ include "Claseprincipal.php";
     $edad = $_POST['Edad'],
     );
 
-    $obj->mostrarContacto();
-    $obj->mostrarServidor();
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +24,17 @@ include "Claseprincipal.php";
                 justify-content: center;
                 align-items: center;
                 height: 100vh;
+                }
+
+
+                .servidor 
+                {
+                margin-top: 15px;
+                font-size: 12px;
+                color: #333;
+                word-break: break-all;
+                border-top: 1px solid rgba(0,0,0,0.2);
+                padding-top: 10px;
                 }
 
 
@@ -82,6 +91,11 @@ include "Claseprincipal.php";
     <div class="dato"><strong>Correo:</strong> <?= $CorreoElectronico ?></div>
     <div class="dato"><strong>Cédula:</strong> <?= $cedula ?></div>
     <div class="dato"><strong>Edad:</strong> <?= $edad ?></div>
+
+        <?php $obj->mostrarServidor(); ?>
+
+
+
 
             <section>
             <form id="salidaP" action="formularioP.php" method="POST">

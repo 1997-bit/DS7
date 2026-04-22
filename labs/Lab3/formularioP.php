@@ -86,7 +86,7 @@
     <br>
     <br>
 
-    <input type="text" name="Edad" placeholder="Edad" required > 
+    <input type="number" name="Edad" placeholder="Edad" min="1" required > 
     <br>
     <br> 
     <input type="submit" value="Enviar" id="Enviar">
