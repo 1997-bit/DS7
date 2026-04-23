@@ -1,5 +1,5 @@
 <?php
-require_once "../config/conexion.php";
+require_once __DIR__ . "/../config/conexion.php";
 
 class Libro extends Conexion {
 
@@ -47,6 +47,13 @@ class Libro extends Conexion {
         $consulta->execute();
     }
 
+    public function obtenerPorId($id) {
+        $conexion = Conexion::Conectar();
+        $consulta = $conexion->prepare("SELECT * FROM libros WHERE id = :id");
+        $consulta->bindParam(':id', $id);
+        $consulta->execute();
+        return $consulta->fetch(PDO::FETCH_ASSOC);
+    }
 
 }
 ?>
