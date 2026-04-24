@@ -14,6 +14,7 @@
 			value="<?= htmlspecialchars($datos['nombre']) ?>"
 			required /></label
 	><br />
+	<br>
 	<label
 		>Autor:
 		<input
@@ -22,6 +23,7 @@
 			value="<?= htmlspecialchars($datos['autor']) ?>"
 			required /></label
 	><br />
+	<br>
 	<label
 		>Categoría:
 		<input
@@ -30,15 +32,17 @@
 			value="<?= htmlspecialchars($datos['categoria']) ?>"
 			required /></label
 	><br />
+	<br>
 	<label
 		>Año:
 		<input
 			type="number"
 			name="anio"
 			value="<?= $datos['anio'] ?>"
-			min="1200"
-			max="2099"
+			min= "1000"
+			max="2100"
 			required /></label
 	><br />
-	<button type="submit">Actualizar</button>
+	<br>
+	<button type="submit" id="Actualizarbtn">Actualizar</button>
 </form>
