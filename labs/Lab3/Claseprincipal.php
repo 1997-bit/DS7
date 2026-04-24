@@ -7,7 +7,7 @@
  public $Cedula;
  public $Edad;
 
- public function __construct($nombre, $CorreoElectronico, $cedula, $edad)
+public function __construct($nombre=null,$CorreoElectronico=null,$cedula=null,$edad=null)
  {
     $this->Nombre = $nombre;
     $this->CorreoElectronico = $CorreoElectronico;
@@ -27,9 +27,31 @@
     echo "REMOTE_ADDR: "    . $_SERVER['REMOTE_ADDR']      . "<br>";
     echo "QUERY_STRING: "   . $_SERVER['QUERY_STRING']     . "<br>";
     echo "</div>";
+<<<<<<< HEAD
  }
 
+=======
+>>>>>>> juan
  }
 
 
+   public function calcularIMC($nombre,$peso,$altura) {
+      $imc = $peso / ($altura * $altura);
+      if ($imc < 18.5) {
+         $estado = "Bajo peso";
+      } elseif ($imc < 25) {
+         $estado = "Normal";
+      } elseif ($imc < 30) {
+         $estado = "Sobrepeso";
+      } else {
+         $estado = "Obesidad";
+      }
+
+      echo "Nombre: $nombre <br>";
+      echo "IMC: ".round($imc,2)."<br>";
+      echo "Estado: $estado <br>";
+   }
+}
 ?>
+
+
