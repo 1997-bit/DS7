@@ -1,5 +1,6 @@
 <?php
-session_start();
+
+
 ?>
 
 <!doctype html>
@@ -7,39 +8,39 @@ session_start();
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 		<title>Registro</title>
+
+		<link rel="stylesheet" href="../assets/css/base.css" />
+		<link rel="stylesheet" href="../assets/css/registro.css" />
+
+		<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
 	</head>
+
 	<body>
-		<form method="POST" action="../controller/Procesar.php">
-			<label>
-				Usuario:
-				<input type="text" name="usuario" required />
-			</label>
+		<section>
+			<div id="Registro">
+				<form method="POST" action="../controller/Procesar.php">
+					<input type="hidden" name="accion" value="registro" />
+					<h3>REGISTRO</h3>
 
-			<br /><br />
+					<label>
+						Usuario:
+						<input type="text" name="usuario" required />
+					</label>
 
-			<label>
-				Nombre:
-				<input type="text" name="nombre" required />
-			</label>
+					<br /><br />
 
-			<br /><br />
+					<label>
+						Contraseña:
+						<input type="password" name="contrasena" required />
+					</label>
 
-			<label>
-				Apellido:
-				<input type="text" name="apellido" required />
-			</label>
+					<br /><br />
 
-			<br /><br />
-
-			<label>
-				Contraseña:
-				<input type="password" name="contraseña" required />
-			</label>
-
-			<br /><br />
-
-			<button type="submit">Guardar</button>
-		</form>
+					<button type="submit">Registrar</button>
+				</form>
+			</div>
+		</section>
 	</body>
 </html>

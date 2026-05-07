@@ -13,7 +13,16 @@ if (!isset($_SESSION["usuario"])) {
 <!doctype html>
 <html>
 	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
 		<title>Salida</title>
+		
+		<link rel="stylesheet" href="../assets/css/base.css" />
+		<link rel="stylesheet" href="../assets/css/salida.css" />
+		
+		<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+		
 	</head>
 	<body>
 		<h1>Bienvenido</h1>
