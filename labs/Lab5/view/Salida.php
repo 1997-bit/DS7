@@ -1,10 +1,11 @@
 <?php
 
-session_start();
+require_once "../config/session.php";
 
 if (!isset($_SESSION["usuario"])) {
 
     echo "No hay sesión iniciada";
+	
     exit();
 }
 
@@ -16,7 +17,7 @@ if (!isset($_SESSION["usuario"])) {
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
-		<title>Salida</title>
+		<title>Factura</title>
 		
 		<link rel="stylesheet" href="../assets/css/base.css" />
 		<link rel="stylesheet" href="../assets/css/salida.css" />
@@ -25,12 +26,12 @@ if (!isset($_SESSION["usuario"])) {
 		
 	</head>
 	<body>
-		<h1>Bienvenido</h1>
+		<h1>Gracias por si visita</h1>
 
 		<?php echo "Usuario: " . $_SESSION["usuario"]; ?>
 
 		<br /><br />
 
-		<a href="Cerrar.php">Cerrar sesión</a>
+		<a href="cerrasesion.php">Cerrar sesión</a>
 	</body>
 </html>

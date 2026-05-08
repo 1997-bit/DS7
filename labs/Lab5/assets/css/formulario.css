@@ -1,6 +1,38 @@
 body {
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
 }
+
+.logout {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    align-self: flex-start;  
+}
+
+section {
+    flex: 1;                 /* ocupa todo el espacio restante */
+    display: flex;
+    justify-content: center;  /* centra horizontalmente */
+    align-items: center;      /* centra verticalmente */
+}
+
+
+.mensaje-sesion {
+  /*background-color: #4CAF50;*/
+  font-size: 20PX;
+  color: rgb(8, 8, 8);
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+}
+
+
+
+
+

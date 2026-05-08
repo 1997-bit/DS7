@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . "/../config/conexion.php";
 require_once __DIR__ . "/../model/usuario.php";
+//sesion llamada
+require_once __DIR__ . "/../config/session.php";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit("Método no permitido");
@@ -43,9 +45,11 @@ if ($accion === "login") {
         $model = new Usuario();
         $data = $model->login($usuario, $contrasena);
 
-        if (!$data) exit("Credenciales incorrectas");
+        if (!$data){
+            header("location: ../view/Login.php?error=credenciales");
+            exit();
+        }
 
-        session_start();
         $_SESSION["id"] = $data["id"];
         $_SESSION["usuario"] = $data["usuario"];
 
@@ -58,8 +62,19 @@ if ($accion === "login") {
 }
 
 
+
 if ($accion === "orden") {
 
+if (!isset($_SESSION["usuario"])) {
+        header("Location: ../view/Login.php?error=sesion");
+        exit;
+    }
+
+
+
+
+ header("Location: ../view/Salida.php");
+    exit;
     //TODO: orden
 }
 

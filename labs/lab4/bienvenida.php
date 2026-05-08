@@ -1,45 +1,22 @@
-<?php
 
- $nombre = $_POST['nombre'];
-
-setcookie("nombre_cookie", $nombre, time() + (300), "/"); 
-
- if(isset($_COOKIE["nombre_cookie"])) {
-} else {
-    echo "La cookie no está definida.";
-}
-
-$mensaje = "bienvenido " . $nombre;
-
-?>
-<!DOCTYPE html>
-<html lang="en">
+<Doctype html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bienvenida</title>
+    <title>Bienvenida</title>
 </head>
 <body>
-
-<p> 
+    <h1>Bienvenida</h1>
     <?php
-    echo $mensaje;
+    if (isset($_COOKIE['nombre_usuario'])) {
+        $nombre = $_COOKIE['nombre_usuario'];
+        echo "<h2>Hola, $nombre!</h2>";
+        echo '<a href="eliminar_cookie.php">Salir</a>';
+    } else {
+        echo "<p>No se ha ingresado el nombre.</p>";
+        echo '<a href="Formulario.php">Volver al formulario</a>';
+    }
     ?>
-</p>
-   <form id="fomularioP" action="index.php" method="POST">
-    <br>
-    <input type="submit" value="Registrar" id="Enviar">
-
-    <br>
-    </form>
-    
-
-
-
-    
 </body>
 </html>
-
-
-
-    

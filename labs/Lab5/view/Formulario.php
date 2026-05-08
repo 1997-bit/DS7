@@ -1,10 +1,22 @@
 <?php
 
+require_once "../config/session.php";
+
+if (!isset($_SESSION["usuario"])) {
+    header("Location: ../view/Login.php");
+    exit();
+}
+
 ?>
 
 <!doctype html>
 <html lang="en">
 	<head>
+
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Expires" content="0"/>
+
+
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -14,11 +26,34 @@
 		<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
 
 	</head>
+
+
 	<body>
+
+	
+	
+		<div class="logout">
+		 <?php include "Logout.php"; ?> 
+		</div>
+
+
+		<div class="mensaje-sesion">
+			<?php
+			if (isset($_SESSION["usuario"])) {
+				echo "Bienvenido, " . ($_SESSION["usuario"]);
+			} else {
+				echo "No hay sesión activa";
+			}
+			?>
+			</div>
+
 		<section>
+
+	
 			<div>
 				<form method="POST" action="../controller/Procesar.php" id="miFormulario">
-
+					<input type="hidden" name="accion" value="orden">
+					
 					<label>
 						Nombre:
 						<input
@@ -190,15 +225,16 @@
 							<tfoot>
 								<tr class="fila-total">
 									<td colspan="4" style="text-align:right;">Total:</td>
-									<td id="otal">0</td>
+									<td id="total">0</td>
 								</tr>
 							</tfoot>
 						</table>
 					</div>
 
 					<br />
-
+					
 					<button type="submit">Enviar</button>
+					
 				</form>
 			</div>
 		</section>
