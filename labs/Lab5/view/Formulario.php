@@ -11,13 +11,14 @@
 		<title>Formulario</title>
 
 		<link rel="stylesheet" href="../assets/css/formulario.css" />
-
 		<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+
 	</head>
 	<body>
 		<section>
 			<div>
-				<form method="POST" action="../controller/Procesar.php">
+				<form method="POST" action="../controller/Procesar.php" id="miFormulario">
+
 					<label>
 						Nombre:
 						<input
@@ -39,6 +40,7 @@
 							required
 						/>
 					</label>
+
 					<label>
 						Fecha de nacimiento:
 						<input
@@ -85,26 +87,121 @@
 
 					<br /><br />
 
-					<h3>Servicios</h3>
-					<input type="checkbox" name="servicios[]" value="1" />
-					Mantenimiento $25
-					<br />
-					<input type="checkbox" name="servicios[]" value="2" />
-					Instalación $15
-					<br />
-					<input type="checkbox" name="servicios[]" value="3" />
-					Respaldo $10
-					<br />
-					<input type="checkbox" name="servicios[]" value="4" />
-					Limpieza $20
-					<br />
-					<input type="checkbox" name="servicios[]" value="5" />
-					Red $30
+					<!-- Tabla de los servicios -->
+					<div class="servicios">
+						<h3>Servicios</h3>
+
+						<table class="tabla-servicios">
+							<thead>
+								<tr>
+									<th>Servicio</th>
+									<th>Precio</th>
+									<th>Cantidad</th>
+									<th>Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- Fila 1 -->
+								<tr>
+									<td>Mantenimiento</td>
+									<td>25.00</td>
+									<td>
+										<input
+											type="number"
+											name="cantidad[1]"
+											min="0"
+											value="0"
+											data-precio="25"
+											class="qty-input"
+										/>
+									</td>
+									<td class="total-cell" id="total-1">0</td>
+								</tr>
+
+								<!-- Fila 2 -->
+								<tr>
+									<td>Instalación</td>
+									<td>15.00</td>
+									<td>
+										<input
+											type="number"
+											name="cantidad[2]"
+											min="0"
+											value="0"
+											data-precio="15"
+											class="qty-input"
+										/>
+									</td>
+									<td class="total-cell" id="total-2">0</td>
+								</tr>
+
+								<!-- Fila 3 -->
+								<tr>
+									<td>Respaldo</td>
+									<td>10.00</td>
+									<td>
+										<input
+											type="number"
+											name="cantidad[3]"
+											min="0"
+											value="0"
+											data-precio="10"
+											class="qty-input"
+										/>
+									</td>
+									<td class="total-cell" id="total-3">0</td>
+								</tr>
+
+								<!-- Fila 4 -->
+								<tr>
+									<td>Limpieza</td>
+									<td>20.00</td>
+									<td>
+										<input
+											type="number"
+											name="cantidad[4]"
+											min="0"
+											value="0"
+											data-precio="20"
+											class="qty-input"
+										/>
+									</td>
+									<td class="total-cell" id="total-4">0</td>
+								</tr>
+
+								<!-- Fila 5 -->
+								<tr>
+									<td>Red</td>
+									<td>30.00</td>
+									<td>
+										<input
+											type="number"
+											name="cantidad[5]"
+											min="0"
+											value="0"
+											data-precio="30"
+											class="qty-input"
+										/>
+									</td>
+									<td class="total-cell" id="total-5">0</td>
+								</tr>
+							</tbody>
+
+							<tfoot>
+								<tr class="fila-total">
+									<td colspan="4" style="text-align:right;">Total:</td>
+									<td id="otal">0</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+
 					<br />
 
-					<button>Enviar</button>
+					<button type="submit">Enviar</button>
 				</form>
 			</div>
 		</section>
+
 	</body>
 </html>
