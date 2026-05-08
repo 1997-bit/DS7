@@ -1,0 +1,29 @@
+#Login {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	padding: 30px;
+	width: 300px;
+
+	/* No es bug.
+    VS Code marca "Unknown property" porque corner-shape  es
+    CSS experimental lol*/
+	corner-shape: squircle;
+	border-radius: 20px;
+	background-color: white;
+}
+
+#Login > label {
+	text-justify: center;
+	font-size: 30px;
+}
+
+#Login > p {
+	font-size: 50px;
+}
+
+#Login input {
+	width: 100%;
+}
