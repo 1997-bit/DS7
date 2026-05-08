@@ -27,12 +27,9 @@ public function __construct($nombre=null,$CorreoElectronico=null,$cedula=null,$e
     echo "REMOTE_ADDR: "    . $_SERVER['REMOTE_ADDR']      . "<br>";
     echo "QUERY_STRING: "   . $_SERVER['QUERY_STRING']     . "<br>";
     echo "</div>";
-<<<<<<< HEAD
  }
 
-=======
->>>>>>> juan
- }
+ 
 
 
    public function calcularIMC($nombre,$peso,$altura) {
