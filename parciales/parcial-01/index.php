@@ -20,12 +20,12 @@
         $bolaFuego = new Habilidad("Bola de Fuego", $random->rCostMana(), $random->rDaño(), $fijo);
         $rayo = new Habilidad("Rayo Divino", $random->rCostMana(), $random->rdaño(), $critico);
 
-        $gandalf = new Personaje("P1", $random->rVida(), $random->rMana());
-        $orco = new Personaje("P2", $random->rVidaEne(),0);
+        $gandalf = new Personaje("Cemento", $random->rVida(), $random->rMana());
+        $orco = new Personaje("Pala", $random->rVidaEne(),0);
 
         $gandalf->aprenderHabilidad($bolaFuego);
         $gandalf->aprenderHabilidad($rayo);
-        echo "<br><h3>--- ¡COMIENZA EL COMBATE! ---</h3>";
+        echo "<br> <h3>--- ¡COMIENZA EL COMBATE! ---</h3>";
 
         $turno = 1;
         while ($gandalf->estaVivo() && $orco->estaVivo()) {

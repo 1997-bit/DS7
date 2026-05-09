@@ -1,0 +1,71 @@
+body {
+	font-family: 'Times New Roman', Times, serif;
+    background: linear-gradient(to bottom, rgb(174, 226, 102) 200px, rgb(67, 240, 185) 110px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
+}
+
+.logout {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logout button {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.logout button:hover {
+    background-color: #cc0000;
+    color: white;
+}
+
+.enviar{
+	cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    background-color: #ff4d4d;
+    color: white;	
+}
+
+.enviar:hover{
+   	background-color: #cc0000;
+	color: white;
+}
+
+section {
+    display: flex;
+    margin-top: 150px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 40px;
+    border-radius: 10%;
+    background: linear-gradient(to bottom, rgb(174, 226, 102), rgb(67, 240, 185));
+	box-shadow: 0px 0px 15px 5px rgb(67, 240, 185); 
+	border: 2px solid rgb(67, 240, 185);
+}
+
+
+.mensaje-sesion {
+  font-size: 40PX;
+  color: rgb(8, 8, 8);
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+}
+
+
+
+
+
