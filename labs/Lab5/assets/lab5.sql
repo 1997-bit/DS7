@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 07, 2026 at 11:50 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.1.25
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 10-05-2026 a las 01:28:21
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `lab5`
+-- Base de datos: `lab5`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cliente`
+-- Estructura de tabla para la tabla `cliente`
 --
 
 CREATE TABLE `cliente` (
@@ -38,22 +38,39 @@ CREATE TABLE `cliente` (
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `fecha_nacimiento`, `genero`, `nacionalidad`, `direccion`, `email`) VALUES
+(1, 'Gloria', 'Moreno', '1997-11-11', 'F', 'Panamena', 'Panamá', 'gloria.m97@gmail.com'),
+(2, 'Jhon', 'Due', '1954-02-05', 'M', 'Panamena', 'Panama', 'ejemplo@email.com');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orden`
+-- Estructura de tabla para la tabla `orden`
 --
 
 CREATE TABLE `orden` (
   `id` int(11) NOT NULL,
   `total` decimal(10,2) NOT NULL,
-  `fecha` datetime NOT NULL
+  `fecha` datetime NOT NULL,
+  `id_cliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `orden`
+--
+
+INSERT INTO `orden` (`id`, `total`, `fecha`, `id_cliente`) VALUES
+(1, 95.00, '2026-05-09 17:46:33', 1),
+(2, 80.00, '2026-05-09 18:20:39', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orden_servicio`
+-- Estructura de tabla para la tabla `orden_servicio`
 --
 
 CREATE TABLE `orden_servicio` (
@@ -64,10 +81,20 @@ CREATE TABLE `orden_servicio` (
   `subtotal` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `orden_servicio`
+--
+
+INSERT INTO `orden_servicio` (`id`, `id_orden`, `id_servicio`, `cantidad`, `subtotal`) VALUES
+(1, 1, 1, 2, 50.00),
+(2, 1, 2, 3, 45.00),
+(3, 2, 3, 2, 20.00),
+(4, 2, 4, 3, 60.00);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `servicio`
+-- Estructura de tabla para la tabla `servicio`
 --
 
 CREATE TABLE `servicio` (
@@ -76,10 +103,21 @@ CREATE TABLE `servicio` (
   `precio` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `servicio`
+--
+
+INSERT INTO `servicio` (`id`, `descripcion`, `precio`) VALUES
+(1, 'Mantenimiento de computadoras', 25.00),
+(2, 'Instalación de software', 15.00),
+(3, 'Respaldo de información', 10.00),
+(4, 'Limpieza interna de hardware', 20.00),
+(5, 'Revisión de red y conexión', 30.00);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -89,74 +127,81 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `id_usuario`, `contrasena`) VALUES
+(1, 'admin', '$2y$10$do34s51xNt5udsnUp9KaqOtLE/v4/fjusVOK9JW31HLzLDmPA4sU2');
+
+--
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `cliente`
+-- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `orden`
+-- Indices de la tabla `orden`
 --
 ALTER TABLE `orden`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orden_servicio`
+-- Indices de la tabla `orden_servicio`
 --
 ALTER TABLE `orden_servicio`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `servicio`
+-- Indices de la tabla `servicio`
 --
 ALTER TABLE `servicio`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `usuario`
+-- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id_usuario` (`id_usuario`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `cliente`
+-- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `orden`
+-- AUTO_INCREMENT de la tabla `orden`
 --
 ALTER TABLE `orden`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `orden_servicio`
+-- AUTO_INCREMENT de la tabla `orden_servicio`
 --
 ALTER TABLE `orden_servicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `servicio`
+-- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
