@@ -233,7 +233,7 @@ if (!isset($_SESSION["usuario"])) {
 
 					<br />
 					
-					<button type="submit">Enviar</button>
+					<button class="enviar" type="submit">Enviar</button>
 					
 				</form>
 			</div>

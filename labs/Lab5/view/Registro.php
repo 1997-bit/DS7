@@ -39,8 +39,8 @@
 						/> </label
 					><br /><br />
 
-					<button type="submit">Registrar</button>
-					<p><a href="Login.php">Ya tengo cuenta</a></p>
+					<button class="registro" type="submit">Registrar</button>
+					<button class="tienecuenta" onclick="window.location.href='Login.php'">Ya tengo cuenta</button>				
 				</form>
 			</div>
 		</section>

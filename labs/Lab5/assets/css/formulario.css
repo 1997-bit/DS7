@@ -1,4 +1,6 @@
 body {
+	font-family: 'Times New Roman', Times, serif;
+    background: linear-gradient(to bottom, rgb(174, 226, 102) 200px, rgb(67, 240, 185) 110px);
     min-height: 100vh;
     display: flex;
     flex-direction: column;  
@@ -11,20 +13,51 @@ body {
     padding: 10px 20px;
     width: 100%;
     box-sizing: border-box;
-    align-self: flex-start;  
+}
+
+.logout button {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.logout button:hover {
+    background-color: #cc0000;
+    color: white;
+}
+
+.enviar{
+	cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    background-color: #ff4d4d;
+    color: white;	
+}
+
+.enviar:hover{
+   	background-color: #cc0000;
+	color: white;
 }
 
 section {
-    flex: 1;                 /* ocupa todo el espacio restante */
     display: flex;
-    justify-content: center;  /* centra horizontalmente */
-    align-items: center;      /* centra verticalmente */
+    margin-top: 150px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 40px;
+    border-radius: 10%;
+    background: linear-gradient(to bottom, rgb(174, 226, 102), rgb(67, 240, 185));
+	box-shadow: 0px 0px 15px 5px rgb(67, 240, 185); 
+	border: 2px solid rgb(67, 240, 185);
 }
 
 
 .mensaje-sesion {
-  /*background-color: #4CAF50;*/
-  font-size: 20PX;
+  font-size: 40PX;
   color: rgb(8, 8, 8);
   padding: 10px 20px;
   text-align: center;

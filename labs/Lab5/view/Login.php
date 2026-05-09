@@ -45,8 +45,8 @@ require_once "../config/session.php";
 
 					<br /><br />
 
-					<button type="submit">Ingresar</button>
-					<p><a href="Registro.php">Crear Cuenta</a></p>
+					<button class="ingresar" type="submit">Ingresar</button>
+					<button class="registrar" onclick="window.location.href='Registro.php'">Crear Cuenta</button>
 				</form>
 			</div>
 		</section>
