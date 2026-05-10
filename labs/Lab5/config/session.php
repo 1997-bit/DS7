@@ -1,3 +1,5 @@
 <?php
-//TODO: Sessions
+
+session_start();
+
 ?>
