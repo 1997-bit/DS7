@@ -29,6 +29,8 @@ public function __construct($nombre=null,$CorreoElectronico=null,$cedula=null,$e
     echo "</div>";
  }
 
+ 
+
 
    public function calcularIMC($nombre,$peso,$altura) {
       $imc = $peso / ($altura * $altura);
