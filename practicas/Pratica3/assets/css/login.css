@@ -1,0 +1,59 @@
+#Login {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	padding: 30px;
+	width: 300px;
+
+	/* No es bug.
+    VS Code marca "Unknown property" porque corner-shape  es
+    CSS experimental lol*/
+	corner-shape: squircle;
+	border-radius: 20px;
+	background-color: rgb(229, 51, 51);
+
+
+	box-shadow: 0px 0px 15px 5px #EF0606;}
+
+#Login > label {
+	text-justify: center;
+	font-size: 30px;
+}
+
+#Login > p {
+	font-size: 50px;
+}
+
+#Login input {
+	width: 100%;
+}
+
+.registrar{
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    background-color: #180505;
+    color: white;
+	cursor: pointer;
+}
+
+.registrar:hover{
+	background-color: #cc0000;
+    color: white;
+}
+ 
+.ingresar{
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    background-color: #180505;
+    color: white;
+	cursor: pointer;
+}
+
+.ingresar:hover{
+	background-color: #cc0000;
+    color: white;
+}

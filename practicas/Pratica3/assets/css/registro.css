@@ -1,0 +1,60 @@
+#Registro {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	padding: 30px;
+	width: 300px;
+
+	/* No es bug.
+    VS Code marca "Unknown property" porque corner-shape  es
+    CSS experimental lol*/
+	corner-shape: squircle;
+	border-radius: 20px;
+	background-color: rgb(229, 51, 51);
+
+
+	box-shadow: 0px 0px 15px 5px #EF0606;}
+
+#Registro > label {
+	text-justify: center;
+	font-size: 30px;
+}
+
+#Registro > p {
+	font-size: 50px;
+}
+
+#Registro input {
+	width: 100%;
+}
+
+
+.tienecuenta{
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    background-color: #180505;
+    color: white;
+	cursor: pointer;
+}
+
+.tienecuenta:hover{
+	background-color: #cc0000;
+    color: white;
+}
+ 
+.registro{
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    background-color: #180505;
+    color: white;
+	cursor: pointer;
+}
+
+.registro:hover{
+	background-color: #cc0000;
+    color: white;
+}
