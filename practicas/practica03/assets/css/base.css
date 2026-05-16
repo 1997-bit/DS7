@@ -3,8 +3,6 @@
 }
 
 body {
-	background: #000;
-	background: -webkit-linear-gradient(to top, #4e4d4d, #000);
 	background: linear-gradient(to top, #232323, #000);
 }
 

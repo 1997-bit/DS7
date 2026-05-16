@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__ . "/../config/conexion.php";
 require_once __DIR__ . "/../model/usuario.php";
+require_once __DIR__ . "/../model/Recordarme.php";
+
 //sesion llamada
 require_once __DIR__ . "/../config/session.php";
-
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit("Método no permitido");
 }
@@ -33,7 +34,7 @@ if ($accion === "registro") {
     }
 }
 
-// LONGIN
+// LOGIN
 if ($accion === "login") {
 
     $usuario = trim($_POST["usuario"] ?? "");
@@ -50,8 +51,20 @@ if ($accion === "login") {
             exit();
         }
 
+        // sesión normal
         $_SESSION["id"] = $data["id"];
         $_SESSION["usuario"] = $data["usuario"];
+
+        //recuerdame
+        if(isset($_POST["recordarme"])){
+
+            $token = bin2hex(random_bytes(32));
+
+            $rec = new Recordarme();
+            $rec->crear($data["id"], $token);
+
+            setcookie("remember",$token,time()+60*60*24*30,"/");
+        }
 
         header("Location: ../view/Formulario.php");
         exit;
