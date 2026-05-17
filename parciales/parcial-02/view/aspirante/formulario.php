@@ -116,7 +116,7 @@
 				/>
 			</label>
 			<label
-				>Residencia
+				>Residencia 
 				<input
 					type="text"
 					name="residencia"

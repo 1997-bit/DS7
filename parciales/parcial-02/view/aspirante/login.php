@@ -60,12 +60,20 @@
 
 					<button class="ingresar" type="submit">Ingresar</button>
 					<button
+						type="button"
 						class="registrar"
 						class="registrar"
 						onclick="window.location.href = '/registro'"
 					>
 						Crear Cuenta
 					</button>
+					<button
+							type="button"
+							class="admin-btn"
+							onclick="window.location.href = 'rh/login'"
+						>
+							Acceso Admin
+						</button>
 				</form>
 			</div>
 		</section>

@@ -1,6 +1,7 @@
 <?php 
 
 
+
 ?>
 
 <!doctype html>
@@ -19,7 +20,7 @@
 	<body>
 		<section>
 			<div id="Login" >
-				<form method="POST" autocomplete="on" action="../controller/Procesar.php">
+				<form method="POST" autocomplete="on" action="/rh/login">
 					<input type="hidden" name="accion" value="login" />
 					<h3>LOGIN</h3>
 
@@ -45,8 +46,15 @@
 
 					<br /><br />
 
-					<button class="ingresar" type="submit">Ingresar</button>
-					<button class="registrar" onclick="window.location.href='Registro.php'">Crear Cuenta</button>
+			<button class="ingresar" type="submit">Ingresar</button>
+
+					 <button
+							type="button"
+							class="usuario-btn"
+							onclick="window.location.href = '/login'">
+							Usuario
+					</button>
+
 				</form>
 			</div>
 		</section>

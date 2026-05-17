@@ -76,6 +76,42 @@ section {
 #Login input[type="checkbox"] {
 	width: 18px;
 	height: 18px;
-	accent-color: #180505;
+	accent-color: hsl(0, 66%, 6%);
 	cursor: pointer;
+}
+
+
+/*   Lo nuevo    */
+
+.admin-btn {
+	border-radius: 5px;
+	border: none;
+    margin-top: 10px;
+	background-color: #180505;
+	color: white;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 8px 16px;
+}
+
+.admin-btn:hover {
+	background-color: #cc0000;
+	color: white;
+}
+
+
+.usuario-btn {
+	border-radius: 5px;
+	border: none;
+    margin-top: 10px;
+	background-color: #180505;
+	color: white;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 8px 16px;
+}
+
+.usuario-btn:hover {
+	background-color: #cc0000;
+	color: white;
 }
