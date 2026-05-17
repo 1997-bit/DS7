@@ -48,6 +48,9 @@ require_once "../config/session.php";
 
 					<br /><br />
 
+					 <input type="checkbox" name="checkbox" id="recuerdame">
+					 <span> recuerdame </span>
+
 					<button class="ingresar" type="submit">Ingresar</button>
 					<button class="registrar" onclick="window.location.href='Registro.php'">Crear Cuenta</button>
 				</form>

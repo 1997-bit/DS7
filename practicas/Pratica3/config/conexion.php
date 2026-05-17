@@ -4,7 +4,7 @@ class Conexion
     public static function Conectar()
     {
         $host = 'localhost';
-        $db   = 'lab5';
+        $db   = 'practica3';
         $user = 'root';
         $pass = '';
 
