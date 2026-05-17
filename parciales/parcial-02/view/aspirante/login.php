@@ -18,35 +18,54 @@
 	</head>
 	<body>
 		<section>
-			<div id="Login" >
-				<form method="POST" autocomplete="on" action="../controller/Procesar.php">
-					<input type="hidden" name="accion" value="login" />
+			<div id="Login">
+				<form method="POST" autocomplete="on" action="/login">
 					<h3>LOGIN</h3>
 
-					<?php if (isset($_GET["error"]) && $_GET["error"] === "sesion"): ?>
-    				<p style="color: red;">Tu sesión ha expirado, inicia sesión nuevamente.</p>
-					<?php endif; ?>
-
-					<?php if (isset($_GET["error"]) && $_GET["error"] === "credenciales"): ?>
-						<p style="color: white;">Usuario o contraseña incorrectos.</p>
+					<?php if (isset($_GET["error"]) && $_GET["error"] ===
+					"sesion"): ?>
+					<p style="color: red">
+						Tu sesión ha expirado, inicia sesión nuevamente.
+					</p>
+					<?php endif; ?> <?php if (isset($_GET["error"]) &&
+					$_GET["error"] === "credenciales"): ?>
+					<p style="color: white">
+						Usuario o contraseña incorrectos.
+					</p>
 					<?php endif; ?>
 
 					<label>
 						Usuario:
-						<input type="text" name="usuario" autocomplete="username" required />
+						<input
+							type="text"
+							name="usuario"
+							autocomplete="username"
+							required
+						/>
 					</label>
 
 					<br /><br />
 
 					<label>
 						Contraseña:
-						<input type="password" name="contrasena" autocomplete="current-password" required />
+						<input
+							type="password"
+							name="contrasena"
+							autocomplete="current-password"
+							required
+						/>
 					</label>
 
 					<br /><br />
 
 					<button class="ingresar" type="submit">Ingresar</button>
-					<button class="registrar" onclick="window.location.href='Registro.php'">Crear Cuenta</button>
+					<button
+						class="registrar"
+						class="registrar"
+						onclick="window.location.href = '/registro'"
+					>
+						Crear Cuenta
+					</button>
 				</form>
 			</div>
 		</section>
