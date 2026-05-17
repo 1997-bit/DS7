@@ -28,7 +28,7 @@ require_once "../config/session.php";
 					<?php endif; ?>
 
 					<?php if (isset($_GET["error"]) && $_GET["error"] === "credenciales"): ?>
-						<p style="color: red;">Usuario o contraseña incorrectos.</p>
+						<p style="color: white;">Usuario o contraseña incorrectos.</p>
 					<?php endif; ?>
 
 					<label>
