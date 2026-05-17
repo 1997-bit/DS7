@@ -11,15 +11,15 @@
 
 		<title>Login</title>
 
-		<link rel="stylesheet" href="../assets/css/base.css" />
-		<link rel="stylesheet" href="../assets/css/login.css" />
+	<link rel="stylesheet" href="../assets/css/base.css" />
+	<link rel="stylesheet" href="../assets/css/login.css" />
 
 		<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
 	</head>
 	<body>
 		<section>
-			<div id="Login">
-				<form method="POST" action="../controller/Procesar.php">
+			<div id="Login" >
+				<form method="POST" autocomplete="on" action="../controller/Procesar.php">
 					<input type="hidden" name="accion" value="login" />
 					<h3>LOGIN</h3>
 
@@ -33,14 +33,14 @@
 
 					<label>
 						Usuario:
-						<input type="text" name="usuario" required />
+						<input type="text" name="usuario" autocomplete="username" required />
 					</label>
 
 					<br /><br />
 
 					<label>
 						Contraseña:
-						<input type="password" name="contrasena" required />
+						<input type="password" name="contrasena" autocomplete="current-password" required />
 					</label>
 
 					<br /><br />
