@@ -33,7 +33,7 @@
 
 - [✅ ] Vista `rh/home.php` — tabla con lista de todos los aspirantes
 - [✅] Vista `rh/detalle.php` — ver datos del aspirante y cambiar estado
-- [ ] `RhController` — agregar guard de autenticación RH
+- [✅ ] `RhController` — agregar guard de autenticación RH
 - [✅] Login de RH con cuentas pre-creadas en BD (so no registro público)
 ### /Jonathan
 
