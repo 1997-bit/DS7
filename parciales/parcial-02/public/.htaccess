@@ -19,5 +19,7 @@ RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 
 </Files>
 
+RewriteRule ^(config|core|controller|models|database|docs|view)/ - [F,L,NC]
+
 # No directory listing
 Options -Indexes

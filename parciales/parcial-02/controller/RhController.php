@@ -62,27 +62,4 @@ class RhController {
         $this->guard();
         require BASE_PATH.'view/rh/detalle.php';
     }
-
-    function guardarEstado() {
-        const csrfToken = '<?= Security::generarCsrfToken() ?>';
-
-        fetch('/rh/actualizar_estado', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-Token': csrfToken
-            },
-            body: JSON.stringify({
-                id: aspiranteActual.id,
-                estado: document.getElementById('modal-estado').value
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.ok) {
-                cerrarModal();
-                location.reload();
-            }
-        });
-    }
 }

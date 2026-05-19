@@ -15,7 +15,11 @@
 		<link rel="stylesheet" href="../assets/css/base.css" />
 		<link rel="stylesheet" href="../assets/css/login.css" />
 
-		<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/assets/favicons/admin.svg"
+		/>
 	</head>
 	<body>
 		<section>
