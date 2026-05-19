@@ -83,6 +83,7 @@ class AspiranteController {
         $model     = new Perfil();
 
         $datos = [
+            'tipo_doc' => $_POST['tipo_doc'] ?? 'cedula',
             'cedula' => $_POST['documento'],
             'nombre' => $_POST['nombre'],
             'apellido' => $_POST['apellido'],
@@ -95,6 +96,12 @@ class AspiranteController {
             'residencia' => $_POST['residencia'],
             'correo' => $_POST['correo'],
         ];
+
+        $error = $this->validarDatos($datos);
+            if ($error !== null) {
+                header("Location: /formulario?error=$error");
+                exit;
+        }
 
         $model->existe($idUsuario)
             ? $model->actualizar($idUsuario, $datos)
@@ -127,6 +134,7 @@ class AspiranteController {
         $model     = new Perfil();
 
         $datos = [
+            'tipo_doc'         => $_POST['tipo_doc'] ?? 'cedula',
             'cedula'           => $_POST['documento'],
             'nombre'           => $_POST['nombre'],
             'apellido'         => $_POST['apellido'],
@@ -140,6 +148,12 @@ class AspiranteController {
             'correo'           => $_POST['correo'],
         ];
 
+        $error = $this->validarDatos($datos);
+            if ($error !== null) {
+                header("Location: /perfil?error=$error");
+                exit;
+        }
+
         $model->existe($idUsuario)
             ? $model->actualizar($idUsuario, $datos)
             : $model->crear($idUsuario, $datos);
@@ -147,5 +161,69 @@ class AspiranteController {
         header("Location: /home");
         exit;
     }
+   // validaciones, mas seguridad que un required.
+    private function validarDatos(array $datos): ?string {
+    // Campos requeridos
+    $requeridos = ['cedula', 'nombre', 'apellido', 'genero', 'fecha_nacimiento', 'nacionalidad', 'telefono', 'residencia', 'correo'];
+    foreach ($requeridos as $campo) {
+        if (empty($datos[$campo])) {
+            return "empty";
+        }
+    }
+
+// Documento según tipo
+        if ($datos['tipo_doc'] === 'cedula') {
+            $regexCedula = '/^(PE|E|N|[23456789](?:AV|PI)?|1[0123]?(?:AV|PI)?)-(\d{1,4})-(\d{1,6})$/';
+            if (!preg_match($regexCedula, $datos['cedula'])) {
+                return "cedula";
+            }
+        } elseif ($datos['tipo_doc'] === 'pasaporte') {
+            if (!preg_match('/^[A-Z0-9]{6,9}$/', strtoupper($datos['cedula']))) {
+                return "pasaporte";
+            }
+        } else {
+            return "tipo_doc";
+        }
+
+    // Edad mínima 18, máxima 100
+    $fechaNac = new DateTime($datos['fecha_nacimiento']);
+    $hoy = new DateTime();
+    $edad = $hoy->diff($fechaNac)->y;
+    if ($edad < 18 || $edad > 100) {
+        return "edad";
+    }
+
+    // Bloquear caracteres especiales en nombre, apellido, residencia
+    $regexTexto = '/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/';
+    if (!preg_match($regexTexto, $datos['nombre']) ||
+        !preg_match($regexTexto, $datos['apellido'])) {
+        return "caracteres";
+    }
+
+    // Correo válido
+    if (!filter_var($datos['correo'], FILTER_VALIDATE_EMAIL)) {
+        return "correo";
+    }
+
+    // Estado civil permitido
+    $estadosCiviles = ['soltero', 'casado', 'divorciado', 'viudo', 'union_libre'];
+    if (!empty($datos['estado_civil']) && !in_array($datos['estado_civil'], $estadosCiviles)) {
+        return "estado_civil";
+    }
+
+    // Género permitido
+    $generos = ['masculino', 'femenino'];
+    if (!in_array($datos['genero'], $generos)) {
+        return "genero";
+    }
+
+    // Tipo de sangre permitido
+    $tiposSangre = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+    if (!empty($datos['tipo_sangre']) && !in_array($datos['tipo_sangre'], $tiposSangre)) {
+        return "sangre";
+    }
+
+    return null; // Sin errores
+}
 
 }

@@ -26,8 +26,8 @@
 ### Validaciones backend
 
 - [ ] Revalidar todos los campos en el servidor (no confiar solo en HTML `required`)
-- [ ] Sanitizar salidas con `htmlspecialchars()` en vistas de RH (detalle del aspirante)
-- [ ] Verificar que `estado` solo acepte valores permitidos: `no_revisado`, `considerado`, `no_considerado`
+- [✅] Sanitizar salidas con `htmlspecialchars()` en vistas de RH (detalle del aspirante)
+- [✅ ] Verificar que `estado` solo acepte valores permitidos: `no_revisado`, `considerado`, `no_considerado`
 
 ### Módulo RH (incompleto)
 
