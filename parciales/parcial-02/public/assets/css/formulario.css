@@ -1,36 +1,122 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family:
+		system-ui,
+		Segoe UI,
+		Roboto,
+		Arial;
+}
+
 body {
-	font-family: Arial, sans-serif;
-	background: #f2f2f2;
-	display: flex;
-	justify-content: center;
-	padding: 30px;
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+	background: linear-gradient(to top, #232323, #000);
 }
 
+/* CARD */
 form {
+	width: 760px;
+	padding: 36px;
+	border-radius: 24px;
 	background: #fff;
-	padding: 20px;
-	width: 420px;
-	border: 1px solid #ccc;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 18px 20px;
 }
 
+/* labels */
 label {
-	display: block;
-	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
 	font-size: 14px;
+	font-weight: 600;
+	color: #111827;
 }
 
+/* asterisco DESPUÉS del texto, solo en labels con required */
+label:has(input[required])::after,
+label:has(select[required])::after {
+	content: " *";
+	color: #ef4444;
+	font-size: 16px;
+	font-weight: 800;
+	order: -1; /* lo sube arriba, junto al texto del label */
+}
+
+/* pero el input/select debe bajar */
+label input,
+label select {
+	order: 1;
+}
+
+/* inputs */
 input,
 select {
 	width: 100%;
-	padding: 6px;
+	padding: 10px 12px;
+	border-radius: 10px;
+	border: 1px solid #d1d5db;
+	font-size: 14px;
+	outline: none;
+	background: #fff;
+}
+
+input:focus,
+select:focus {
+	border-color: #2563eb;
+	box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* full width */
+#legend,
+button {
+	grid-column: span 2;
+}
+
+/* legend */
+#legend {
+	font-size: 13px;
+	color: #6b7280;
 	margin-top: 4px;
 }
 
+#legend::before {
+	content: "* ";
+	color: #ef0606;
+	font-weight: 800;
+}
+
+/* botón */
 button {
-	margin-top: 15px;
-	width: 100%;
-	padding: 8px;
-	background: #2b6cb0;
-	color: #fff;
+	margin-top: 10px;
+	padding: 14px;
 	border: none;
+	border-radius: 12px;
+	background: #111827;
+	color: #fff;
+	font-weight: 700;
+	font-size: 15px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+button:hover {
+	background: #000;
+}
+
+/* responsive */
+@media (max-width: 820px) {
+	form {
+		width: 95%;
+		grid-template-columns: 1fr;
+	}
+	#legend,
+	button {
+		grid-column: span 1;
+	}
 }

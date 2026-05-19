@@ -1,0 +1,68 @@
+main {
+	max-width: 900px;
+	margin: auto;
+	padding: 40px 20px;
+}
+
+/* título */
+h2 {
+	margin-bottom: 20px;
+}
+
+/* card base */
+.card {
+	background: #fff;
+	border-radius: 14px;
+	padding: 24px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+	border: 1px solid #e5e7eb;
+	margin-bottom: 20px;
+}
+
+/* estado */
+.estado {
+	padding: 12px 16px;
+	border-radius: 10px;
+	font-weight: 600;
+	width: fit-content;
+}
+
+.estado.no_revisado {
+	background: #e5e7eb;
+}
+.estado.considerado {
+	background: #22c55e;
+	color: #fff;
+}
+.estado.no_considerado {
+	background: #ef4444;
+	color: #fff;
+}
+
+/* lista datos */
+ul {
+	list-style: none;
+	margin-top: 10px;
+	line-height: 1.9;
+}
+
+li b {
+	display: inline-block;
+	width: 120px;
+}
+
+/* links botón */
+a {
+	display: inline-block;
+	margin-top: 15px;
+	padding: 10px 16px;
+	border-radius: 8px;
+	background: #111827;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+a:hover {
+	background: #000;
+}

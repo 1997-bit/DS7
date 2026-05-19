@@ -8,6 +8,12 @@
 		<meta charset="UTF-8" />
 		<title>Home</title>
 		<link rel="stylesheet" href="/assets/css/base.css" />
+		<link rel="stylesheet" href="/assets/css/home.css" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/assets/favicons/aspirante.svg"
+		/>
 	</head>
 	<body>
 		<?php require BASE_PATH . 'view/partials/navbar.php'; ?>

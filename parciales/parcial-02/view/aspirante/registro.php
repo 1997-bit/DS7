@@ -9,7 +9,11 @@
 		<title>Registro</title>
 		<link rel="stylesheet" href="../assets/css/base.css" />
 		<link rel="stylesheet" href="../assets/css/registro.css" />
-		<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/assets/favicons/aspirante.svg"
+		/>
 	</head>
 	<body>
 		<section>
