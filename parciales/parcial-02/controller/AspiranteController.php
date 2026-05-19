@@ -133,14 +133,9 @@ class AspiranteController
 
     public function perfil(): void
     {
-        Security::requireAspiranteAuth();
-
-        $pdo = Conexion::Conectar();
-        $stmt = $pdo->prepare("SELECT * FROM perfil WHERE id_usuario = ?");
-        $stmt->execute([$_SESSION['aspirante_id']]);
-        $perfil = $stmt->fetch(PDO::FETCH_ASSOC) ?: [];
-
-        require BASE_PATH . 'view/aspirante/perfil.php';
+        http_response_code(404);
+        require BASE_PATH . 'view/errors/404.php';
+        exit;
     }
 
     public function post_perfil(): void

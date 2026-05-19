@@ -357,102 +357,29 @@
         </form>
     </dialog>
 
-    <script>
-        /* ── Validaciones client-side (mismo regex que PHP) ── */
-        const tipoDoc        = document.getElementById('tipo_doc');
-        const documento      = document.getElementById('documento');
-        const nombre         = document.getElementById('nombre');
-        const apellido       = document.getElementById('apellido');
-        const residencia     = document.getElementById('residencia');
-        const fechaNacimiento = document.getElementById('fecha_nacimiento');
+   <script>
+        function guardarEstado() {
+            const csrfToken = '<?= Security::generarCsrfToken() ?>';
 
-        const regexCedula    = /^(PE|E|N|[23456789](?:AV|PI)?|1[0123]?(?:AV|PI)?)-(\d{1,4})-(\d{1,6})$/;
-        const regexPasaporte = /^[A-Z0-9]{6,9}$/i;
-        const regexTexto     = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
-
-        function validarDocumento() {
-            const tipo  = tipoDoc.value;
-            const valor = documento.value.trim();
-            if (tipo === 'cedula') {
-                documento.setCustomValidity(
-                    regexCedula.test(valor) ? '' : 'Cédula inválida. Ej: 8-123-456789'
-                );
-            } else {
-                documento.setCustomValidity(
-                    regexPasaporte.test(valor) ? '' : 'Pasaporte inválido. 6-9 caracteres alfanuméricos.'
-                );
-            }
+            fetch('/rh/actualizar_estado', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': csrfToken
+                },
+                body: JSON.stringify({
+                    id: aspiranteActual.id,
+                    estado: document.getElementById('modal-estado').value
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.ok) {
+                    cerrarModal();
+                    location.reload();
+                }
+            });
         }
-
-        function validarEdad() {
-            const valor = fechaNacimiento.value;
-            if (!valor) return;
-            const hoy  = new Date();
-            const nac  = new Date(valor);
-            const diff = hoy.getMonth() - nac.getMonth();
-            const edad = hoy.getFullYear() - nac.getFullYear()
-                         - (diff < 0 || (diff === 0 && hoy.getDate() < nac.getDate()) ? 1 : 0);
-            if (edad < 18)       fechaNacimiento.setCustomValidity('Debes tener al menos 18 años.');
-            else if (edad > 100) fechaNacimiento.setCustomValidity('La edad máxima es 100 años.');
-            else                 fechaNacimiento.setCustomValidity('');
-        }
-
-        function validarTexto(campo) {
-            campo.setCustomValidity(
-                regexTexto.test(campo.value)
-                ? '' : 'No se permiten números ni caracteres especiales.'
-            );
-        }
-
-        documento.addEventListener('input',  validarDocumento);
-        tipoDoc.addEventListener('change',   validarDocumento);
-        fechaNacimiento.addEventListener('change', validarEdad);
-        nombre.addEventListener('input',     () => validarTexto(nombre));
-        apellido.addEventListener('input',   () => validarTexto(apellido));
-        residencia.addEventListener('input', () => validarTexto(residencia));
-
-        function validarFormulario() {
-            validarDocumento();
-            validarEdad();
-            validarTexto(nombre);
-            validarTexto(apellido);
-            validarTexto(residencia);
-            return document.getElementById('form-perfil').checkValidity();
-        }
-
-        /* ── Feedback de vuelta desde servidor ── */
-        (function () {
-            const params = new URLSearchParams(window.location.search);
-            const msg    = document.getElementById('dlg-msg');
-            if (!msg) return;
-
-            const errores = {
-                empty:       'Faltan campos obligatorios.',
-                cedula:      'Formato de cédula inválido.',
-                pasaporte:   'Formato de pasaporte inválido.',
-                tipo_doc:    'Tipo de documento no válido.',
-                edad:        'Debes tener entre 18 y 100 años.',
-                caracteres:  'Nombre o apellido con caracteres no permitidos.',
-                correo:      'Correo electrónico inválido.',
-                estado_civil:'Estado civil no válido.',
-                genero:      'Género no válido.',
-                sangre:      'Tipo de sangre no válido.',
-            };
-
-            if (params.get('updated') === 'ok') {
-                msg.textContent = '✓ Perfil actualizado correctamente.';
-                msg.className   = 'dlg-msg ok';
-                document.getElementById('dialog-perfil').showModal();
-            } else if (params.get('error')) {
-                msg.textContent = errores[params.get('error')] ?? 'Error al actualizar.';
-                msg.className   = 'dlg-msg err';
-                document.getElementById('dialog-perfil').showModal();
-            }
-
-            history.replaceState({}, '', '/home');
-        })();
     </script>
-    <?php endif; ?>
-
 </body>
 </html>
