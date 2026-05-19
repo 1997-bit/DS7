@@ -263,8 +263,7 @@ class AspiranteController
 
         session_destroy();
 
-        header("Location: /login");
-        exit;
+        Security::redirect('/login');
     }
 
 }
