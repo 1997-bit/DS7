@@ -9,13 +9,19 @@
 		<title>Registro</title>
 		<link rel="stylesheet" href="../assets/css/base.css" />
 		<link rel="stylesheet" href="../assets/css/registro.css" />
-		<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/assets/favicons/aspirante.svg"
+		/>
 	</head>
 	<body>
 		<section>
 			<div id="Registro">
 				<form method="POST" action="/registro">
+					
 					<h3>REGISTRO</h3>
+					<input type="hidden" name="csrf_token" value="<?= Security::generarCsrfToken() ?>">
 
 					<label
 						>Usuario:

@@ -20,6 +20,8 @@ class RhController {
     }
 
     public function post_login() {
+        Security::validarCsrfToken();
+        Security::checkRateLimit('login_rh');
         $usuario = $_POST['usuario'];
         $contrasena = $_POST['contrasena'];
 
@@ -29,6 +31,7 @@ class RhController {
         $user = $stmt->fetch();
 
         if ($user && password_verify($contrasena, $user['contrasena'])) {
+            Security::clearRateLimit('login_rh');
             $_SESSION['rh'] = $usuario;
             header('Location: /rh/home');
             exit;
@@ -60,23 +63,26 @@ class RhController {
         require BASE_PATH.'view/rh/detalle.php';
     }
 
-    public function post_actualizar_estado() {
-        $this->guard();
+    function guardarEstado() {
+        const csrfToken = '<?= Security::generarCsrfToken() ?>';
 
-        $data = json_decode(file_get_contents('php://input'), true);
-        $id = $data['id'];
-        $estado = $data['estado'];
-
-        $permitidos = ['no_revisado', 'considerado', 'no_considerado'];
-        if (!in_array($estado, $permitidos)) {
-            echo json_encode(['ok' => false]);
-            exit;
-        }
-
-        $db = Conexion::Conectar();
-        $stmt = $db->prepare("UPDATE perfil SET estado = ? WHERE id = ?");
-        $stmt->execute([$estado, $id]);
-
-        echo json_encode(['ok' => true]);
+        fetch('/rh/actualizar_estado', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken
+            },
+            body: JSON.stringify({
+                id: aspiranteActual.id,
+                estado: document.getElementById('modal-estado').value
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.ok) {
+                cerrarModal();
+                location.reload();
+            }
+        });
     }
 }
