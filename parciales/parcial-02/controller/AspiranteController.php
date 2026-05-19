@@ -76,11 +76,17 @@ class AspiranteController
     public function post_registro(): void
     {
         Security::validarCsrfToken();
-        $usuario = $_POST['usuario'] ?? '';
+        $usuario   = $_POST['usuario']   ?? '';
         $contrasena = $_POST['contrasena'] ?? '';
 
         if ($usuario === '' || $contrasena === '') {
             header("Location: /registro?error=empty");
+            exit;
+        }
+
+        $patron = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{15,}$/';
+        if (!preg_match($patron, $contrasena)) {
+            header("Location: /registro?error=contrasena");
             exit;
         }
 
