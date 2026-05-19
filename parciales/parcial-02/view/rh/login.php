@@ -1,5 +1,6 @@
 <?php 
-require_once "../config/session.php";
+
+
 
 ?>
 
@@ -11,18 +12,15 @@ require_once "../config/session.php";
 
 		<title>Login</title>
 
-		<link rel="stylesheet" href="../assets/css/base.css" />
-		<link rel="stylesheet" href="../assets/css/login.css" />
+	<link rel="stylesheet" href="../assets/css/base.css" />
+	<link rel="stylesheet" href="../assets/css/login.css" />
 
 		<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
 	</head>
 	<body>
-
-			
-
 		<section>
-			<div id="Login">
-				<form method="POST" action="../controller/Procesar.php">
+			<div id="Login" >
+				<form method="POST" autocomplete="on" action="/rh/login">
 					<input type="hidden" name="accion" value="login" />
 					<h3>LOGIN</h3>
 
@@ -31,28 +29,32 @@ require_once "../config/session.php";
 					<?php endif; ?>
 
 					<?php if (isset($_GET["error"]) && $_GET["error"] === "credenciales"): ?>
-						<p style="color: red;">Usuario o contraseña incorrectos.</p>
+						<p style="color: white;">Usuario o contraseña incorrectos.</p>
 					<?php endif; ?>
 
 					<label>
 						Usuario:
-						<input type="text" name="usuario" required />
+						<input type="text" name="usuario" autocomplete="username" required />
 					</label>
 
 					<br /><br />
 
 					<label>
 						Contraseña:
-						<input type="password" name="contrasena" required />
+						<input type="password" name="contrasena" autocomplete="current-password" required />
 					</label>
 
 					<br /><br />
 
-					 <input type="checkbox" name="checkbox" id="recuerdame">
-					 <span> recuerdame </span>
+			<button class="ingresar" type="submit">Ingresar</button>
 
-					<button class="ingresar" type="submit">Ingresar</button>
-					<button class="registrar" onclick="window.location.href='Registro.php'">Crear Cuenta</button>
+					 <button
+							type="button"
+							class="usuario-btn"
+							onclick="window.location.href = '/login'">
+							Usuario
+					</button>
+
 				</form>
 			</div>
 		</section>

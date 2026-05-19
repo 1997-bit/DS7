@@ -1,4 +1,4 @@
-#Login {
+#Registro {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
@@ -17,20 +17,21 @@
 
 	box-shadow: 0px 0px 15px 5px #EF0606;}
 
-#Login > label {
+#Registro > label {
 	text-justify: center;
 	font-size: 30px;
 }
 
-#Login > p {
+#Registro > p {
 	font-size: 50px;
 }
 
-#Login input {
+#Registro input {
 	width: 100%;
 }
 
-.registrar{
+
+.tienecuenta{
     border: none;
     border-radius: 5px;
     padding: 8px 16px;
@@ -39,12 +40,12 @@
 	cursor: pointer;
 }
 
-.registrar:hover{
+.tienecuenta:hover{
 	background-color: #cc0000;
     color: white;
 }
  
-.ingresar{
+.registro{
     border: none;
     border-radius: 5px;
     padding: 8px 16px;
@@ -53,9 +54,7 @@
 	cursor: pointer;
 }
 
-.ingresar:hover{
+.registro:hover{
 	background-color: #cc0000;
     color: white;
 }
-
-
