@@ -4,7 +4,7 @@
     <div>
         Usuario: <?= htmlspecialchars($_SESSION['rh'] ?? '') ?>
         | 
-        <form method="POST" action="/rh/login" style="display:inline;">
+        <form method="POST" action="/login" style="display:inline;">
             <input type="hidden" name="csrf_token" value="<?= Security::generarCsrfToken() ?>">
             <button type="submit" style="background:none;border:none;cursor:pointer;color:inherit;padding:0;">
                 Salir

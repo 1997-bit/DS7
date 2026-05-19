@@ -5,18 +5,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<link rel="stylesheet" href="/assets/css/formulario.css" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/assets/favicons/aspirante.svg"
+		/>
 
 		<title>Document</title>
 	</head>
 	<body>
 		<form method="POST" action="/formulario">
-			<label>Tipo de documento
+			<input type="hidden" name="csrf_token" value="<?= Security::generarCsrfToken() ?>">
+
+			<label
+				>Tipo de documento
 				<select name="tipo_doc" id="tipo_doc" required>
 					<option value="cedula">Cédula</option>
 					<option value="pasaporte">Pasaporte</option>
 				</select>
 			</label>
-			<label>Número de documento
+			<label
+				>Número de documento
 				<input
 					type="text"
 					name="documento"
@@ -27,7 +36,8 @@
 					placeholder="Cédula o pasaporte"
 				/>
 			</label>
-			<label>Nombre
+			<label
+				>Nombre
 				<input
 					type="text"
 					name="nombre"
@@ -38,7 +48,8 @@
 					required
 				/>
 			</label>
-			<label>Apellido
+			<label
+				>Apellido
 				<input
 					type="text"
 					name="apellido"
@@ -49,7 +60,8 @@
 					required
 				/>
 			</label>
-			<label>Estado civil
+			<label
+				>Estado civil
 				<select name="estado_civil">
 					<option value="">Seleccione</option>
 					<option value="soltero">Soltero(a)</option>
@@ -59,14 +71,16 @@
 					<option value="union_libre">Unión libre</option>
 				</select>
 			</label>
-			<label>Género
+			<label
+				>Género
 				<select name="genero" required>
 					<option value="">Seleccione</option>
 					<option value="masculino">Masculino</option>
 					<option value="femenino">Femenino</option>
 				</select>
 			</label>
-			<label>Tipo de sangre
+			<label
+				>Tipo de sangre
 				<select name="sangre">
 					<option value="">Seleccione</option>
 					<option value="A+">A+</option>
@@ -79,7 +93,8 @@
 					<option value="O-">O-</option>
 				</select>
 			</label>
-			<label>Fecha de nacimiento
+			<label
+				>Fecha de nacimiento
 				<input
 					type="date"
 					name="fecha_nacimiento"
@@ -88,13 +103,15 @@
 					required
 				/>
 			</label>
-			<label>Nacionalidad
+			<label
+				>Nacionalidad
 				<select name="nacionalidad" required>
 					<option value="" selected disabled>Seleccione país</option>
 					<?php include __DIR__ . '/../partials/form/paises.php'; ?>
 				</select>
 			</label>
-			<label>Teléfono
+			<label
+				>Teléfono
 				<input
 					type="tel"
 					inputmode="tel"
@@ -104,7 +121,8 @@
 					required
 				/>
 			</label>
-			<label>Residencia
+			<label
+				>Residencia
 				<input
 					type="text"
 					name="residencia"
@@ -114,7 +132,8 @@
 					required
 				/>
 			</label>
-			<label>Correo electrónico
+			<label
+				>Correo electrónico
 				<input
 					type="email"
 					name="correo"

@@ -1,14 +1,33 @@
 RewriteEngine On
 
 
+
+# Front controller
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 
-<FilesMatch "\.md$">
+# Archivos Sensibles
+<FilesMatch "\.(md|env|log|sql|bak|sh|ini|htaccess)$">
     Require all denied
+    ErrorDocument 403 /index.php?url=errors/404
 </FilesMatch>
 
-RewriteRule ^(config|controller|models|view|docs)/ - [F,L]
+<Files ".htaccess">
+    Require all denied
+    ErrorDocument 403 /index.php?url=errors/404
 
+</Files>
+
+RewriteRule ^(config|core|controller|models|database|docs|view)/ - [F,L,NC]
+
+# No directory listing
 Options -Indexes
+
+ServerSignature Off
+# 4) Front controller SIEMPRE al final
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+Header always set X-Content-Type-Options "nosniff"
