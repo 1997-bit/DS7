@@ -47,6 +47,8 @@ class AspiranteController
 
     public function post_login(): void
     {
+        Security::validarCsrfToken();
+        Security::checkRateLimit('login_aspirante');
         $usuario = $_POST['usuario'] ?? '';
         $contrasena = $_POST['contrasena'] ?? '';
 
@@ -58,6 +60,7 @@ class AspiranteController
             exit;
         }
 
+        Security::clearRateLimit('login_aspirante');
         session_regenerate_id(true);
         $_SESSION['aspirante_id'] = $data['id'];
         $_SESSION['usuario'] = $data['usuario'];
@@ -72,6 +75,7 @@ class AspiranteController
 
     public function post_registro(): void
     {
+        Security::validarCsrfToken();
         $usuario = $_POST['usuario'] ?? '';
         $contrasena = $_POST['contrasena'] ?? '';
 
@@ -88,6 +92,7 @@ class AspiranteController
     public function post_formulario(): void
     {
         Security::requireAspiranteAuth();
+        Security::validarCsrfToken();
 
         $idUsuario = $_SESSION['aspirante_id'];
         $model = new Perfil();

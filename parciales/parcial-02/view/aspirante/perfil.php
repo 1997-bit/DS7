@@ -7,6 +7,11 @@
 		<link rel="stylesheet" href="/assets/css/formulario.css" />
 	</head>
 	<body>
-		<form method="POST" action="/perfil" autocomplete="on"></form>
+		<form method="POST" action="/perfil" autocomplete="on">
+		<input type="hidden" name="csrf_token" value="<?= Security::generarCsrfToken() ?>">
+
+
+		</form>
+
 	</body>
 </html>

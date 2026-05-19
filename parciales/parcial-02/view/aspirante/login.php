@@ -26,6 +26,8 @@
 			<div id="Login">
 				<form method="POST" autocomplete="on" action="/login">
 					<h3>LOGIN</h3>
+					<input type="hidden" name="csrf_token" value="<?= Security::generarCsrfToken() ?>">
+
 
 					<?php if (isset($_GET["error"]) && $_GET["error"] ===
 					"sesion"): ?>

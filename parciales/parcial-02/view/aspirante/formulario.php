@@ -15,6 +15,8 @@
 	</head>
 	<body>
 		<form method="POST" action="/formulario">
+			<input type="hidden" name="csrf_token" value="<?= Security::generarCsrfToken() ?>">
+
 			<label
 				>Tipo de documento
 				<select name="tipo_doc" id="tipo_doc" required>

@@ -19,7 +19,9 @@
 		<section>
 			<div id="Registro">
 				<form method="POST" action="/registro">
+					
 					<h3>REGISTRO</h3>
+					<input type="hidden" name="csrf_token" value="<?= Security::generarCsrfToken() ?>">
 
 					<label
 						>Usuario:

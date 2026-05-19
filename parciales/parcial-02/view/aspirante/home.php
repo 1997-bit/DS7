@@ -33,7 +33,7 @@
 		'no_considerado' => 'NO CONSIDERADO', default => 'NO REVISADO' }; ?>
 
 		<div style="padding: 10px; border: 1px solid #ccc; margin-bottom: 15px">
-			<b>Estado:</b> <?= $label ?>
+			<b>Estado:</b> <?= htmlspecialchars($label) ?>
 		</div>
 
 		<h3>Datos personales</h3>
