@@ -3,7 +3,6 @@
 
     <div>
         Usuario: <?= htmlspecialchars($_SESSION['usuario'] ?? '') ?>
-        | <a href="/perfil">Editar</a>
         | <a href="/login">Salir</a>
     </div>
 </nav>

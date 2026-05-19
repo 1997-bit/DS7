@@ -146,6 +146,7 @@ class AspiranteController
     public function post_perfil(): void
     {
         Security::requireAspiranteAuth();
+        Security::validarCsrfToken(); 
 
         $idUsuario = $_SESSION['aspirante_id'];
         $model = new Perfil();
@@ -167,7 +168,7 @@ class AspiranteController
 
         $error = $this->validarDatos($datos);
         if ($error !== null) {
-            header("Location: /perfil?error=$error");
+            header("Location: /home?error=$error");
             exit;
         }
 
@@ -175,7 +176,7 @@ class AspiranteController
             ? $model->actualizar($idUsuario, $datos)
             : $model->crear($idUsuario, $datos);
 
-        header("Location: /home");
+        header("Location: /home?updated=ok"); 
         exit;
     }
     // validaciones, mas seguridad que un required.
