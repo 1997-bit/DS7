@@ -18,12 +18,12 @@ class RhController {
     public function login() {
         require BASE_PATH.'view/rh/login.php';
     }
-
     public function post_login() {
         Security::validarCsrfToken();
-        Security::checkRateLimit('login_rh');
-        $usuario = $_POST['usuario'];
-        $contrasena = $_POST['contrasena'];
+        $usuario    = $_POST['usuario']    ?? '';   // ← primero
+        $contrasena = $_POST['contrasena'] ?? '';
+
+        Security::checkRateLimit('admin', $usuario);  // ← luego
 
         $db = Conexion::Conectar();
         $stmt = $db->prepare("SELECT * FROM rh_usuario WHERE id_usuario = ?");
@@ -31,7 +31,7 @@ class RhController {
         $user = $stmt->fetch();
 
         if ($user && password_verify($contrasena, $user['contrasena'])) {
-            Security::clearRateLimit('login_rh');
+            Security::clearRateLimit('admin', $usuario);
             $_SESSION['rh'] = $usuario;
             header('Location: /rh/home');
             exit;
@@ -61,5 +61,26 @@ class RhController {
     public function detalle($id = null) {
         $this->guard();
         require BASE_PATH.'view/rh/detalle.php';
+    }
+    public function post_actualizar_estado(): void
+    {
+        $this->guard();
+
+        $body  = json_decode(file_get_contents('php://input'), true);
+        $id    = (int)($body['id'] ?? 0);
+        $estado = $body['estado'] ?? '';
+
+        $permitidos = ['no_revisado', 'considerado', 'no_considerado'];
+        if (!in_array($estado, $permitidos, true) || $id <= 0) {
+            http_response_code(400);
+            echo json_encode(['ok' => false, 'error' => 'Datos inválidos']);
+            exit;
+        }
+
+        $db = Conexion::Conectar();
+        $stmt = $db->prepare("UPDATE perfil SET estado = ? WHERE id = ?");
+        $stmt->execute([$estado, $id]);
+
+        echo json_encode(['ok' => true]);
     }
 }

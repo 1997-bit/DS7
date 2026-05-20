@@ -45,33 +45,34 @@ class AspiranteController
 
     // Acciones POST
 
-    public function post_login(): void
-    {
-        Security::validarCsrfToken();
-        Security::checkRateLimit('login_aspirante');
-        $usuario = $_POST['usuario'] ?? '';
-        $contrasena = $_POST['contrasena'] ?? '';
+public function post_login(): void
+{
+    Security::validarCsrfToken();
+    $usuario    = $_POST['usuario']    ?? '';   // ← primero
+    $contrasena = $_POST['contrasena'] ?? '';
 
-        $model = new Usuario();
-        $data = $model->login($usuario, $contrasena);
+    Security::checkRateLimit('aspirante', $usuario);  // ← luego
 
-        if (!$data) {
-            header("Location: /login?error=credenciales");
-            exit;
-        }
+    $model = new Usuario();
+    $data  = $model->login($usuario, $contrasena);
 
-        Security::clearRateLimit('login_aspirante');
-        session_regenerate_id(true);
-        $_SESSION['aspirante_id'] = $data['id'];
-        $_SESSION['usuario'] = $data['usuario'];
-
-        header(
-            (int) $data['perfil_completo'] === 0
-            ? "Location: /formulario"
-            : "Location: /home"
-        );
+    if (!$data) {
+        header("Location: /login?error=credenciales");
         exit;
     }
+
+    Security::clearRateLimit('aspirante', $usuario);
+    session_regenerate_id(true);
+    $_SESSION['aspirante_id'] = $data['id'];
+    $_SESSION['usuario']      = $data['usuario'];
+
+    header(
+        (int) $data['perfil_completo'] === 0
+        ? "Location: /formulario"
+        : "Location: /home"
+    );
+    exit;
+}
 
     public function post_registro(): void
     {

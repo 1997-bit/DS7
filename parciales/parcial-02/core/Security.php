@@ -58,43 +58,40 @@ class Security
         unset($_SESSION['csrf_token']);
     }
 
-public static function checkRateLimit(string $key, int $maxIntentos = 5, int $ventanaSegundos = 300): void
+public static function checkRateLimit(string $rol, string $usuario, int $maxIntentos = 5, int $ventanaSegundos = 300): void
 {
-    $ahora = time();
-    $ip    = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
-    $keyIp = $key . '_ip_' . md5($ip);
+    $pdo = Conexion::Conectar();
 
-    // Verificar bloqueo por IP primero
-    $datosIp = $_SESSION['rate_limit'][$keyIp]
-        ?? ['intentos' => 0, 'desde' => $ahora, 'bloqueado_hasta' => 0];
+    $pdo->prepare("
+        DELETE FROM login_attempts
+        WHERE identifier = ? AND ip = ?
+          AND attempted_at < DATE_SUB(NOW(), INTERVAL ? SECOND)
+    ")->execute([$usuario, $rol, $ventanaSegundos]);
 
-    if ($datosIp['bloqueado_hasta'] > $ahora) {
-        $restante = $datosIp['bloqueado_hasta'] - $ahora;
+    $stmt = $pdo->prepare("
+        SELECT COUNT(*) FROM login_attempts
+        WHERE identifier = ? AND ip = ?
+          AND attempted_at >= DATE_SUB(NOW(), INTERVAL ? SECOND)
+    ");
+    $stmt->execute([$usuario, $rol, $ventanaSegundos]);
+
+    if ((int) $stmt->fetchColumn() >= $maxIntentos) {
         http_response_code(429);
-        die("Demasiados intentos. Intenta de nuevo en {$restante} segundos.");
+        die("Demasiados intentos para este usuario. Intenta en {$ventanaSegundos} segundos.");
     }
 
-    if ($ahora - $datosIp['desde'] > $ventanaSegundos) {
-        $datosIp = ['intentos' => 0, 'desde' => $ahora, 'bloqueado_hasta' => 0];
-    }
-
-    $datosIp['intentos']++;
-
-    if ($datosIp['intentos'] >= $maxIntentos) {
-        $datosIp['bloqueado_hasta'] = $ahora + $ventanaSegundos;
-        $_SESSION['rate_limit'][$keyIp] = $datosIp;
-        http_response_code(429);
-        die("Demasiados intentos. Intenta de nuevo en {$ventanaSegundos} segundos.");
-    }
-
-    $_SESSION['rate_limit'][$keyIp] = $datosIp;
+    $pdo->prepare("
+        INSERT INTO login_attempts (identifier, ip, attempted_at)
+        VALUES (?, ?, NOW())
+    ")->execute([$usuario, $rol]);
 }
 
-    public static function clearRateLimit(string $key): void
-    {
-        $ip    = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
-        $keyIp = $key . '_ip_' . md5($ip);
-        unset($_SESSION['rate_limit'][$keyIp]);
-    }
+public static function clearRateLimit(string $rol, string $usuario): void
+{
+    $pdo = Conexion::Conectar();
+    $pdo->prepare("
+        DELETE FROM login_attempts WHERE identifier = ? AND ip = ?
+    ")->execute([$usuario, $rol]);
+}
 
 }

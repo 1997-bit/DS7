@@ -10,23 +10,23 @@ class Usuario
         $this->pdo = Conexion::Conectar();
     }
 
-public function registrar(string $usuario, string $contrasena): int
-{
-    // Primero verificar si ya existe
-    $check = $this->pdo->prepare("SELECT 1 FROM usuario WHERE id_usuario = ? LIMIT 1");
-    $check->execute([$usuario]);
-    if ($check->fetchColumn()) {
-        header("Location: /registro?error=duplicado");
-        exit;
-    }
+    public function registrar(string $usuario, string $contrasena): int
+    {
+        // Primero verificar si ya existe
+        $check = $this->pdo->prepare("SELECT 1 FROM usuario WHERE id_usuario = ? LIMIT 1");
+        $check->execute([$usuario]);
+        if ($check->fetchColumn()) {
+            header("Location: /registro?error=duplicado");
+            exit;
+        }
 
-    $hash = password_hash($contrasena, PASSWORD_ARGON2ID);
-    $stmt = $this->pdo->prepare(
-        "INSERT INTO usuario (id_usuario, contrasena) VALUES (?, ?)"
-    );
-    $stmt->execute([$usuario, $hash]);
-    return (int)$this->pdo->lastInsertId();
-}
+        $hash = password_hash($contrasena, PASSWORD_ARGON2ID);
+        $stmt = $this->pdo->prepare(
+            "INSERT INTO usuario (id_usuario, contrasena) VALUES (?, ?)"
+        );
+        $stmt->execute([$usuario, $hash]);
+        return (int)$this->pdo->lastInsertId();
+    }
 
     public function login(string $usuario, string $contrasena): ?array
     {
