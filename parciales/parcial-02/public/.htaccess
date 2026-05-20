@@ -23,3 +23,5 @@ RewriteRule ^(config|core|controller|models|database|docs|view)/ - [F,L,NC]
 
 # No directory listing
 Options -Indexes
+
+ServerSignature Off

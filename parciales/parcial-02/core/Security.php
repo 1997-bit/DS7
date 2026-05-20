@@ -60,6 +60,7 @@ class Security
 
 public static function checkRateLimit(string $rol, string $usuario, int $maxIntentos = 5, int $ventanaSegundos = 300): void
 {
+    
     $pdo = Conexion::Conectar();
 
     $pdo->prepare("
