@@ -173,7 +173,7 @@
     </style>
 </head>
 <body>
-    <?php require BASE_PATH . 'view/partials/navbar.php'; ?>
+    <?php require BASE_PATH . 'view/partials/navbar1.php'; ?>
 
     <hr />
 
