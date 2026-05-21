@@ -9,20 +9,20 @@ class AspiranteController
 
     // Vistas
 
-    public function login() {
-        if (isset($_SESSION['rh'])) {
-            $_SESSION = [];
-            if (ini_get('session.use_cookies')) {
-                $params = session_get_cookie_params();
-                setcookie(session_name(), '', time() - 42000,
-                    $params['path'], $params['domain'],
-                    $params['secure'], $params['httponly']);
-            }
-            session_regenerate_id(true);
-            session_destroy();
+public function login() {
+    if (isset($_SESSION['rh'])) {
+        $_SESSION = [];
+        if (ini_get('session.use_cookies')) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params['path'], $params['domain'],
+                $params['secure'], $params['httponly']);
         }
-        require BASE_PATH.'view/rh/login.php';
+        session_regenerate_id(true);
+        session_destroy();
     }
+    require BASE_PATH . 'view/aspirante/login.php';
+}
 
     public function registro()
     {
