@@ -17,6 +17,7 @@ $_cookie_value= "valor_cookie";
     <input id="usuario" type="text" name="nombre" placeholder="ingrese su nombre" required>
     <br>
     <br>
+    
 
     <input type="submit" value="Enviar" id="Enviar">
 

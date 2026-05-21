@@ -1,6 +1,7 @@
 <?php 
 
 
+
 ?>
 
 <!doctype html>
@@ -14,39 +15,70 @@
 		<link rel="stylesheet" href="../assets/css/base.css" />
 		<link rel="stylesheet" href="../assets/css/login.css" />
 
-		<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/assets/favicons/admin.svg"
+		/>
 	</head>
 	<body>
 		<section>
 			<div id="Login">
-				<form method="POST" action="../controller/Procesar.php">
+				<form method="POST" autocomplete="on" action="/rh/login">
+					<input
+						type="hidden"
+						name="csrf_token"
+						value="<?= Security::generarCsrfToken() ?>"
+					/>
+
 					<input type="hidden" name="accion" value="login" />
 					<h3>LOGIN</h3>
 
-					<?php if (isset($_GET["error"]) && $_GET["error"] === "sesion"): ?>
-    				<p style="color: red;">Tu sesión ha expirado, inicia sesión nuevamente.</p>
-					<?php endif; ?>
-
-					<?php if (isset($_GET["error"]) && $_GET["error"] === "credenciales"): ?>
-						<p style="color: white;">Usuario o contraseña incorrectos.</p>
+					<?php if (isset($_GET["error"]) && $_GET["error"] ===
+					"sesion"): ?>
+					<p style="color: red">
+						Tu sesión ha expirado, inicia sesión nuevamente.
+					</p>
+					<?php endif; ?> <?php if (isset($_GET["error"]) &&
+					$_GET["error"] === "credenciales"): ?>
+					<p style="color: white">
+						Usuario o contraseña incorrectos.
+					</p>
 					<?php endif; ?>
 
 					<label>
 						Usuario:
-						<input type="text" name="usuario" required />
+						<input
+							type="text"
+							name="usuario"
+							autocomplete="username"
+							required
+						/>
 					</label>
 
 					<br /><br />
 
 					<label>
 						Contraseña:
-						<input type="password" name="contrasena" required />
+						<input
+							type="password"
+							name="contrasena"
+							autocomplete="current-password"
+							required
+						/>
 					</label>
 
 					<br /><br />
 
 					<button class="ingresar" type="submit">Ingresar</button>
-					<button class="registrar" onclick="window.location.href='Registro.php'">Crear Cuenta</button>
+
+					<button
+						type="button"
+						class="usuario-btn"
+						onclick="window.location.href = '/login'"
+					>
+						Usuario
+					</button>
 				</form>
 			</div>
 		</section>

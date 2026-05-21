@@ -26,6 +26,9 @@ parcial2.test → 127.0.0.1 → tu PC
 Archivo:
 C:\xampp\apache\conf\httpd.conf
 
+
+
+
 Buscar:
 #Include conf/extra/httpd-vhosts.conf
 
