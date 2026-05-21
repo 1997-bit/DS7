@@ -25,3 +25,9 @@ RewriteRule ^(config|core|controller|models|database|docs|view)/ - [F,L,NC]
 Options -Indexes
 
 ServerSignature Off
+# 4) Front controller SIEMPRE al final
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+Header always set X-Content-Type-Options "nosniff"
