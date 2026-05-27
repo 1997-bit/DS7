@@ -11,6 +11,27 @@ class AspiranteController
 
     public function login()
     {
+        if (isset($_SESSION['rh'])) {
+            $_SESSION = [];
+
+            if (ini_get('session.use_cookies')) {
+                $params = session_get_cookie_params();
+
+                setcookie(
+                    session_name(),
+                    '',
+                    time() - 42000,
+                    $params['path'],
+                    $params['domain'],
+                    $params['secure'],
+                    $params['httponly']
+                );
+            }
+
+            session_regenerate_id(true);
+            session_destroy();
+        }
+
         require BASE_PATH . 'view/aspirante/login.php';
     }
 
@@ -30,8 +51,11 @@ class AspiranteController
         Security::requireAspiranteAuth();
 
         $pdo = Conexion::Conectar();
+
         $stmt = $pdo->prepare("SELECT * FROM perfil WHERE id_usuario = ?");
+
         $stmt->execute([$_SESSION['aspirante_id']]);
+
         $perfil = $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
 
         require BASE_PATH . 'view/aspirante/home.php';
@@ -47,8 +71,12 @@ class AspiranteController
 
     public function post_login(): void
     {
+        Security::validarCsrfToken();
+
         $usuario = $_POST['usuario'] ?? '';
         $contrasena = $_POST['contrasena'] ?? '';
+
+        Security::checkRateLimit('aspirante', $usuario);
 
         $model = new Usuario();
         $data = $model->login($usuario, $contrasena);
@@ -58,20 +86,26 @@ class AspiranteController
             exit;
         }
 
+        Security::clearRateLimit('aspirante', $usuario);
+
         session_regenerate_id(true);
+
         $_SESSION['aspirante_id'] = $data['id'];
         $_SESSION['usuario'] = $data['usuario'];
 
         header(
-            (int) $data['perfil_completo'] === 0
-            ? "Location: /formulario"
-            : "Location: /home"
+            (int)$data['perfil_completo'] === 0
+                ? "Location: /formulario"
+                : "Location: /home"
         );
+
         exit;
     }
 
     public function post_registro(): void
     {
+        Security::validarCsrfToken();
+
         $usuario = $_POST['usuario'] ?? '';
         $contrasena = $_POST['contrasena'] ?? '';
 
@@ -80,7 +114,15 @@ class AspiranteController
             exit;
         }
 
+        $patron = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{15,}$/';
+
+        if (!preg_match($patron, $contrasena)) {
+            header("Location: /registro?error=contrasena");
+            exit;
+        }
+
         (new Usuario())->registrar($usuario, $contrasena);
+
         header("Location: /login?registro=ok");
         exit;
     }
@@ -88,8 +130,10 @@ class AspiranteController
     public function post_formulario(): void
     {
         Security::requireAspiranteAuth();
+        Security::validarCsrfToken();
 
         $idUsuario = $_SESSION['aspirante_id'];
+
         $model = new Perfil();
 
         $datos = [
@@ -108,6 +152,7 @@ class AspiranteController
         ];
 
         $error = $this->validarDatos($datos);
+
         if ($error !== null) {
             header("Location: /formulario?error=$error");
             exit;
@@ -122,6 +167,7 @@ class AspiranteController
             ->execute([$idUsuario]);
 
         $_SESSION['perfil_completo'] = true;
+
         header("Location: /home");
         exit;
     }
@@ -131,8 +177,11 @@ class AspiranteController
         Security::requireAspiranteAuth();
 
         $pdo = Conexion::Conectar();
+
         $stmt = $pdo->prepare("SELECT * FROM perfil WHERE id_usuario = ?");
+
         $stmt->execute([$_SESSION['aspirante_id']]);
+
         $perfil = $stmt->fetch(PDO::FETCH_ASSOC) ?: [];
 
         require BASE_PATH . 'view/aspirante/perfil.php';
@@ -141,8 +190,10 @@ class AspiranteController
     public function post_perfil(): void
     {
         Security::requireAspiranteAuth();
+        Security::validarCsrfToken();
 
         $idUsuario = $_SESSION['aspirante_id'];
+
         $model = new Perfil();
 
         $datos = [
@@ -161,6 +212,7 @@ class AspiranteController
         ];
 
         $error = $this->validarDatos($datos);
+
         if ($error !== null) {
             header("Location: /perfil?error=$error");
             exit;
@@ -170,14 +222,26 @@ class AspiranteController
             ? $model->actualizar($idUsuario, $datos)
             : $model->crear($idUsuario, $datos);
 
-        header("Location: /home");
+        header("Location: /home?updated=ok");
         exit;
     }
+
     // validaciones, mas seguridad que un required.
     private function validarDatos(array $datos): ?string
     {
         // Campos requeridos
-        $requeridos = ['cedula', 'nombre', 'apellido', 'genero', 'fecha_nacimiento', 'nacionalidad', 'telefono', 'residencia', 'correo'];
+        $requeridos = [
+            'cedula',
+            'nombre',
+            'apellido',
+            'genero',
+            'fecha_nacimiento',
+            'nacionalidad',
+            'telefono',
+            'residencia',
+            'correo'
+        ];
+
         foreach ($requeridos as $campo) {
             if (empty($datos[$campo])) {
                 return "empty";
@@ -186,28 +250,37 @@ class AspiranteController
 
         // Documento según tipo
         if ($datos['tipo_doc'] === 'cedula') {
+
             $regexCedula = '/^(PE|E|N|[23456789](?:AV|PI)?|1[0123]?(?:AV|PI)?)-(\d{1,4})-(\d{1,6})$/';
+
             if (!preg_match($regexCedula, $datos['cedula'])) {
                 return "cedula";
             }
+
         } elseif ($datos['tipo_doc'] === 'pasaporte') {
+
             if (!preg_match('/^[A-Z0-9]{6,9}$/', strtoupper($datos['cedula']))) {
                 return "pasaporte";
             }
+
         } else {
             return "tipo_doc";
         }
 
         // Edad mínima 18, máxima 100
         $fechaNac = new DateTime($datos['fecha_nacimiento']);
+
         $hoy = new DateTime();
+
         $edad = $hoy->diff($fechaNac)->y;
+
         if ($edad < 18 || $edad > 100) {
             return "edad";
         }
 
-        // Bloquear caracteres especiales en nombre, apellido, residencia
+        // Bloquear caracteres especiales en nombre y apellido
         $regexTexto = '/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/';
+
         if (
             !preg_match($regexTexto, $datos['nombre']) ||
             !preg_match($regexTexto, $datos['apellido'])
@@ -221,29 +294,52 @@ class AspiranteController
         }
 
         // Estado civil permitido
-        $estadosCiviles = ['soltero', 'casado', 'divorciado', 'viudo', 'union_libre'];
-        if (!empty($datos['estado_civil']) && !in_array($datos['estado_civil'], $estadosCiviles)) {
+        $estadosCiviles = [
+            'soltero',
+            'casado',
+            'divorciado',
+            'viudo',
+            'union_libre'
+        ];
+
+        if (
+            !empty($datos['estado_civil']) &&
+            !in_array($datos['estado_civil'], $estadosCiviles)
+        ) {
             return "estado_civil";
         }
 
         // Género permitido
         $generos = ['masculino', 'femenino'];
+
         if (!in_array($datos['genero'], $generos)) {
             return "genero";
         }
 
         // Tipo de sangre permitido
-        $tiposSangre = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
-        if (!empty($datos['tipo_sangre']) && !in_array($datos['tipo_sangre'], $tiposSangre)) {
+        $tiposSangre = [
+            'A+',
+            'A-',
+            'B+',
+            'B-',
+            'AB+',
+            'AB-',
+            'O+',
+            'O-'
+        ];
+
+        if (
+            !empty($datos['tipo_sangre']) &&
+            !in_array($datos['tipo_sangre'], $tiposSangre)
+        ) {
             return "sangre";
         }
 
-        return null; // Sin errores
+        return null;
     }
 
     public function logout(): void
     {
-
         $_SESSION = [];
 
         if (ini_get("session.use_cookies")) {
@@ -265,5 +361,4 @@ class AspiranteController
 
         Security::redirect('/login');
     }
-
 }

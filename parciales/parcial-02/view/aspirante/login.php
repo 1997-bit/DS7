@@ -13,6 +13,11 @@
 
 		<link rel="stylesheet" href="../assets/css/base.css" />
 		<link rel="stylesheet" href="../assets/css/login.css" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/assets/favicons/aspirante.svg"
+		/>
 
 		<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
 	</head>
@@ -21,6 +26,8 @@
 			<div id="Login">
 				<form method="POST" autocomplete="on" action="/login">
 					<h3>LOGIN</h3>
+					<input type="hidden" name="csrf_token" value="<?= Security::generarCsrfToken() ?>">
+
 
 					<?php if (isset($_GET["error"]) && $_GET["error"] ===
 					"sesion"): ?>
@@ -68,12 +75,12 @@
 						Crear Cuenta
 					</button>
 					<button
-							type="button"
-							class="admin-btn"
-							onclick="window.location.href = 'rh/login'"
-						>
-							Acceso Admin
-						</button>
+						type="button"
+						class="admin-btn"
+						onclick="window.location.href = 'rh/login'"
+					>
+						Acceso Admin
+					</button>
 				</form>
 			</div>
 		</section>

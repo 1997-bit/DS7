@@ -1,7 +1,16 @@
-<?php http_response_code(404); ?>
 <!doctype html>
-<html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<title>404</title>
+		<link rel="stylesheet" href="/assets/css/base.css" />
+		<link rel="stylesheet" href="/assets/css/404.css" />
+	</head>
 	<body>
-		<h1>404 - Página no encontrada</h1>
+		<main class="wrap">
+			<h1>404</h1>
+			<p>Página no encontrada</p>
+			<a href="/login" class="btn-salir">Salir</a>
+		</main>
 	</body>
 </html>

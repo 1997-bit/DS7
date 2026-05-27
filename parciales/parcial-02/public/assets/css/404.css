@@ -1,0 +1,65 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family:
+		system-ui,
+		Segoe UI,
+		Roboto,
+		Arial;
+}
+
+body {
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+
+	background: #000;
+	background: -webkit-linear-gradient(to top, #4e4d4d, #000);
+	background: linear-gradient(to top, #232323, #000);
+
+	color: #0f172a;
+}
+
+/* CARD 404 */
+.wrap {
+	text-align: center;
+	padding: 48px 56px;
+	width: 360px;
+
+	border-radius: 24px;
+	corner-shape: squircle; /* experimental */
+
+	background: #e53333;
+	box-shadow: 0 0 20px 6px #ef0606;
+}
+
+/* 404 grande */
+.wrap h1 {
+	font-size: 96px;
+	color: #fff;
+	line-height: 1;
+	margin-bottom: 10px;
+}
+
+/* texto */
+.wrap p {
+	color: #ffe4e4;
+	margin-bottom: 28px;
+	font-size: 18px;
+}
+
+/* botón */
+.btn-salir {
+	display: inline-block;
+	padding: 12px 22px;
+	border-radius: 10px;
+	background: #111827;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.btn-salir:hover {
+	background: #000;
+}
