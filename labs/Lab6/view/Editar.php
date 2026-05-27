@@ -1,4 +1,9 @@
 <?php
+//Integrantes:
+//Juan Garcia
+//Gloria Moreno
+//Miguel Caballero
+//Jonathan Gomez
 
 require_once("../config/Json.php");
 
@@ -11,9 +16,7 @@ $id = $_GET['id'];
 $productoEditar = null;
 
 foreach ($productos as $producto) {
-
     if ($producto['id'] == $id) {
-
         $productoEditar = $producto;
         break;
     }
@@ -22,67 +25,84 @@ foreach ($productos as $producto) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Producto</title>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/formulario.css">
 </head>
 
 <body>
+<div class="page-wrapper">
+
+    <a class="back-link" href="index.php">← Volver al inventario</a>
 
     <h1>Editar Producto</h1>
 
-    <form action="../controller/ProcesarProducto.php"
-        method="POST">
+    <div class="card">
+        <form action="../controller/ProcesarProducto.php" method="POST">
 
-        <input type="hidden"
-            name="accion"
-            value="editar">
+            <input type="hidden" name="accion" value="editar">
 
-        <label>ID</label><br>
+            <div class="form-grid">
 
-        <input type="text"
-            name="id"
-            value="<?= $productoEditar['id'] ?>"
-            readonly><br><br>
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input type="text"
+                        id="id" name="id"
+                        value="<?= $productoEditar['id'] ?>"
+                        readonly>
+                </div>
 
-        <label>Nombre</label><br>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text"
+                        id="nombre" name="nombre"
+                        value="<?= $productoEditar['nombre'] ?>">
+                </div>
 
-        <input type="text"
-            name="nombre"
-            value="<?= $productoEditar['nombre'] ?>"><br><br>
+                <div class="form-group">
+                    <label for="marca">Marca</label>
+                    <input type="text"
+                        id="marca" name="marca"
+                        value="<?= $productoEditar['marca'] ?>">
+                </div>
 
-        <label>Marca</label><br>
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input type="number"
+                        step="0.01"
+                        id="precio" name="precio"
+                        value="<?= $productoEditar['precio'] ?>">
+                </div>
 
-        <input type="text"
-            name="marca"
-            value="<?= $productoEditar['marca'] ?>"><br><br>
+                <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <input type="number"
+                        id="stock" name="stock"
+                        value="<?= $productoEditar['stock'] ?>">
+                </div>
 
-        <label>Precio</label><br>
+                <div class="form-group">
+                    <label for="tipo">Tipo</label>
+                    <input type="text"
+                        id="tipo" name="tipo"
+                        value="<?= $productoEditar['tipo'] ?>">
+                </div>
 
-        <input type="number"
-            step="0.01"
-            name="precio"
-            value="<?= $productoEditar['precio'] ?>"><br><br>
+            </div>
 
-        <label>Stock</label><br>
+            <div class="form-footer">
+                <button type="submit" class="btn-primary">Actualizar Producto</button>
+            </div>
 
-        <input type="number"
-            name="stock"
-            value="<?= $productoEditar['stock'] ?>"><br><br>
+        </form>
+    </div>
 
-        <label>Tipo</label><br>
-
-        <input type="text"
-            name="tipo"
-            value="<?= $productoEditar['tipo'] ?>"><br><br>
-
-        <button type="submit">
-            Actualizar
-        </button>
-
-    </form>
-
+</div>
 </body>
 
 </html>
