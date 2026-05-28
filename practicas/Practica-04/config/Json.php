@@ -10,7 +10,6 @@ class Json
         if (!file_exists($this->archivoUsuarios)) {
             file_put_contents($this->archivoUsuarios, "[]");
         }
-
         $json = file_get_contents($this->archivoUsuarios);
         return json_decode($json, true);
     }
@@ -20,24 +19,17 @@ class Json
         if (!file_exists($this->archivoTareas)) {
             file_put_contents($this->archivoTareas, "[]");
         }
-
         $json = file_get_contents($this->archivoTareas);
         return json_decode($json, true);
     }
 
     public function guardarUsuarios($usuarios)
     {
-        file_put_contents(
-            $this->archivoUsuarios,
-            json_encode($usuarios, JSON_PRETTY_PRINT)
-        );
+        file_put_contents($this->archivoUsuarios, json_encode($usuarios, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 
     public function guardarTareas($tareas)
     {
-        file_put_contents(
-            $this->archivoTareas,
-            json_encode($tareas, JSON_PRETTY_PRINT)
-        );
+        file_put_contents($this->archivoTareas, json_encode($tareas, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 }

@@ -2,9 +2,9 @@
     {
         "id": 1,
         "usuarioId": 1,
-        "titulo": "Crear documentacion x",
-        "descripcion": "Crear documentacion de elicitacion, analisis, especificacion y validacion",
+        "titulo": "Crear documentación de Requerimiento",
+        "descripcion": "Documentar el proceso de elicitación, análisis, especificación y validación de requisitos.",
         "estado": "por hacer",
-        "fechaCreacion": "2026-05-28 04:33:41"
+        "fechaCreacion": "2026-05-28 05:30:34"
     }
 ]

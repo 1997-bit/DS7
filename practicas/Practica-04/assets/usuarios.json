@@ -3,12 +3,6 @@
         "id": 1,
         "nombre": "Nala",
         "email": "nala123@gmail.com",
-        "contrasena": "$2y$10$OnAiuUgmpoRdT0gIbrJCRemLl7yBMSPBX1OinbuzRK2DI5uav9.GC"
-    },
-    {
-        "id": 2,
-        "nombre": "Fiona",
-        "email": "fiona123@gmail.com",
-        "contrasena": "$2y$10$khKPZuyUy1DcmHE0rYTH0eTxMSoP0PatVPEaKxQve\/HXtjh60qzUG"
+        "contrasena": "$2y$10$\/MIKl70j5DgQK1QzvSLBm.cX4KaEHfrIbyhwwR572rbtu4vkZFusO"
     }
 ]
