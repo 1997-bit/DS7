@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1779933103,
+        "usuario": "admin",
+        "descripcion": "Tarea 4",
+        "estado": "por hacer"
+    },
+    {
+        "id": 1779933134,
+        "usuario": "admin",
+        "descripcion": "Laboratorio 6",
+        "estado": "por hacer"
+    }
+]
