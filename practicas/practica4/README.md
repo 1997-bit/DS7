@@ -1,3 +1,9 @@
+Integrantes
+Gloria moreno
+Juan garcia
+Miguel Caballero
+Jonathan gomez
+
 Práctica 4
 - Crear un sistema que lea, inserte, modifique y elimine datos de tareas qué 
 hacer de un usuario usando solo archivos JSON locales.
