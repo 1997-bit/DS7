@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:           #f7f4ef;
+  --surface:      #fdfbf8;
+  --surface-2:    #f2ede6;
+  --border:       #e2dbd0;
+  --border-strong:#c9c0b3;
+  --text:         #1e1b18;
+  --text-muted:   #7a7060;
+  --text-hint:    #b0a898;
+  --accent:       #5c4a32;
+  --accent-light: #ede8e0;
+  --radius-sm:    6px;
+  --radius-md:    10px;
+  --radius-lg:    16px;
+  --font-main:    'Lato', sans-serif;
+  --font-display: 'Playfair Display', serif;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.65;
+  padding: 3rem 1.5rem;
+  min-height: 100vh;
+}
+
+.page-wrapper {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 1.75rem;
+  transition: color 0.15s;
+}
+
+.back-link:hover { color: var(--accent); }
+
+.table-wrapper {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  text-align: left;
+  padding: 11px 18px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-hint);
+}
+
+td {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+tr:last-child td { border-bottom: none; }
+
+tbody tr:hover {
+  background: var(--surface-2);
+  transition: background 0.12s;
+}
+
+td.td-id {
+  font-size: 12px;
+  color: var(--text-hint);
+  letter-spacing: 0.04em;
+}
+
+a.btn-edit {
+  display: inline-block;
+  padding: 4px 13px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: 99px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+a.btn-edit:hover {
+  background: var(--accent);
+  color: var(--surface);
+}
+
+.section-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 2.5rem 0;
+}

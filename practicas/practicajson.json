@@ -1,0 +1,11 @@
+[
+    {
+        "id":1, "nombre":"laptop","precio":999.99
+    },
+    {
+                "id":2, "nombre":"Mouse","precio":25.50
+    },
+    {
+                "id":3, "nombre":"teclado","precio":45.00
+    }
+]
