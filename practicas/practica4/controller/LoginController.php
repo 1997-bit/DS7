@@ -8,21 +8,19 @@ $json = new Json();
 
 $usuarios = $json->leer("../assets/usuarios.json");
 
-$usuario = $_POST['usuario'];
-$password = $_POST['password'];
+$usuario  = trim($_POST['usuario']  ?? '');
+$password = trim($_POST['password'] ?? '');
 
 foreach ($usuarios as $user) {
-
     if (
-        $user['usuario'] == $usuario &&
-        $user['password'] == $password
+        $user['usuario'] === $usuario &&
+        password_verify($password, $user['password'])  // ← corregido
     ) {
-
         $_SESSION['usuario'] = $usuario;
-
         header("Location: ../view/Tareas.php");
         exit();
     }
 }
 
-echo "Usuario o contraseña incorrectos";
+header("Location: ../view/login.php?error=invalido");
+exit();

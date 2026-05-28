@@ -1,0 +1,136 @@
+body {
+    padding: 2rem;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.topbar h1 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.topbar a {
+    font-size: 0.85rem;
+    color: #e53e3e;
+    text-decoration: none;
+    border: 1px solid #e53e3e;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.topbar a:hover {
+    background-color: #fff5f5;
+}
+
+.bienvenida {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.nueva-tarea {
+    background: white;
+    padding: 1.25rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+}
+
+.nueva-tarea h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #444;
+}
+
+.nueva-tarea form {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.nueva-tarea input[type="text"] {
+    flex: 1;
+    margin-top: 0;
+}
+
+.nueva-tarea button {
+    width: auto;
+    background-color: #667eea;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.25rem;
+}
+
+.nueva-tarea button:hover {
+    background-color: #5563c1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+th {
+    background-color: #667eea;
+    color: white;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+td {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #f0f0f0;
+    color: #444;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background-color: #f7f8ff;
+}
+
+.btn-estado {
+    background-color: #667eea;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    margin-right: 4px;
+}
+
+.btn-estado:hover {
+    background-color: #5563c1;
+}
+
+.btn-eliminar {
+    background-color: transparent;
+    color: #e53e3e;
+    border: 1px solid #e53e3e;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+}
+
+.btn-eliminar:hover {
+    background-color: #fff5f5;
+}

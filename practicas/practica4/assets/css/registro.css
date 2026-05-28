@@ -4,7 +4,7 @@ body {
     align-items: center;
 }
 
-#Login {
+#Registro {
     background: white;
     padding: 2rem 2.5rem;
     border-radius: 10px;
@@ -12,7 +12,7 @@ body {
     width: 320px;
 }
 
-#Login h1 {
+#Registro h3 {
     text-align: center;
     font-size: 1.4rem;
     margin-bottom: 1.5rem;
@@ -20,7 +20,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-#Login label {
+#Registro label {
     margin-bottom: 1rem;
     display: block;
 }
