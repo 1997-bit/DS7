@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CalculadoraServicio"
+             targetNamespace="http://localhost/DS7/labs/Lab7/Server/Servicio.php"
+             xmlns:tns="http://localhost/DS7/labs/Lab7/Server/Servicio.php"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <!-- Definición de Mensajes (Entrada y Salida) -->
+    <message name="OperacionRequest">
+        <part name="n1" type="xsd:float"/>
+        <part name="n2" type="xsd:float"/>
+    </message>
+    <message name="OperacionResponse">
+        <part name="resultado" type="xsd:float"/>
+    </message>
+
+    <!-- PortType: Define las operaciones disponibles -->
+    <portType name="CalculadoraPortType">
+        <operation name="sumar"><input message="tns:OperacionRequest"/><output message="tns:OperacionResponse"/></operation>
+        <operation name="restar"><input message="tns:OperacionRequest"/><output message="tns:OperacionResponse"/></operation>
+        <operation name="multiplicar"><input message="tns:OperacionRequest"/><output message="tns:OperacionResponse"/></operation>
+        <operation name="dividir"><input message="tns:OperacionRequest"/><output message="tns:OperacionResponse"/></operation>
+    </portType>
+
+    <!-- Binding: Protocolo de transporte (HTTP/SOAP) -->
+    <binding name="CalculadoraBinding" type="tns:CalculadoraPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="sumar"><soap:operation soapAction="sumar"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+        <operation name="restar"><soap:operation soapAction="restar"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+        <operation name="multiplicar"><soap:operation soapAction="multiplicar"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+        <operation name="dividir"><soap:operation soapAction="dividir"/><input><soap:body use="literal"/></input><output><soap:body use="literal"/></output></operation>
+    </binding>
+
+    <!-- Service: URL exacta del endpoint -->
+    <service name="CalculadoraServicio">
+        <port name="CalculadoraPort" binding="tns:CalculadoraBinding">
+            <soap:address location="http://localhost/DS7/labs/Lab7/Server/Servicio.php"/>
+        </port>
+    </service>
+</definitions>
