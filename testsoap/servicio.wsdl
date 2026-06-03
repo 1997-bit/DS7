@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<definitions name="ProductoServicio"
+             targetNamespace="http://localhost/DS7/testsoap/"
+             xmlns:tns="http://localhost/DS7/testsoap/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <!-- Definición de Mensajes -->
+    <message name="obtenerPrecioRequest">
+        <part name="idProducto" type="xsd:int"/>
+    </message>
+    <message name="obtenerPrecioResponse">
+        <part name="precio" type="xsd:float"/>
+    </message>
+
+    <!-- Operaciones -->
+    <portType name="ProductoServicioPortType">
+        <operation name="obtenerPrecio">
+            <input message="tns:obtenerPrecioRequest"/>
+            <output message="tns:obtenerPrecioResponse"/>
+        </operation>
+    </portType>
+
+    <!-- Enlace -->
+    <binding name="ProductoServicioBinding" type="tns:ProductoServicioPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="obtenerPrecio">
+            <soap:operation soapAction="obtenerPrecio"/>
+            <input>
+                <soap:body use="literal" namespace="http://localhost/DS7/testsoap/"/>
+            </input>
+            <output>
+                <soap:body use="literal" namespace="http://localhost/DS7/testsoap/"/>
+            </output>
+        </operation>
+    </binding>
+
+    <!-- Ubicación del Servicio -->
+    <service name="ProductoServicio">
+        <port name="ProductoServicioPort" binding="tns:ProductoServicioBinding">
+            <soap:address location="http://localhost/DS7/testsoap/servicio.php"/>
+        </port>
+    </service>
+</definitions>
