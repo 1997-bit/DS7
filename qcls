@@ -1,0 +1,115 @@
+[33mcommit add57781e50ac55e393317a00bbca4a68e30ee17[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mMc[m[33m, [m[1;31morigin/Mc[m[33m)[m
+Author: Miguel Caballero <postaldigital.mc@gmail.com>
+Date:   Tue Jun 2 20:25:48 2026 -0500
+
+    Agregando Laboratorio07: Servicios Web SOAP en PHP
+
+[33mcommit 9e222e5f6d7be3c18157d6dca29348a9847332ed[m
+Author: Miguel Caballero <postaldigital.mc@gmail.com>
+Date:   Wed May 27 22:35:03 2026 -0500
+
+    Agregando Practica-04: Corrección guardado de usuarios y acentos UTF-8 en JSON
+
+[33mcommit a02e809c55b162eb2c24351feed92197c2bb3af5[m
+Author: Miguel Caballero <postaldigital.mc@gmail.com>
+Date:   Wed May 27 21:38:29 2026 -0500
+
+    Agregando Practica-04: CRUD para tareas de un Usuario
+
+[33mcommit cdb1d8eb14229d844214caa95efbed096eb6e608[m
+Author: Miguel Caballero <postaldigital.mc@gmail.com>
+Date:   Tue May 19 18:01:23 2026 -0500
+
+    Agregando paracial-02: entregable 001 de la rama juan
+
+[33mcommit d1fd672d96d7775e5336786793facc0cf9fb64ff[m
+Author: Miguel Caballero <postaldigital.mc@gmail.com>
+Date:   Tue May 19 17:24:15 2026 -0500
+
+    Agregando parcial-02: Ultimos cambios de la rama juan
+
+[33mcommit 032e26320ff37cf283800b5f112711609bf4c595[m
+Author: Miguel Caballero <postaldigital.mc@gmail.com>
+Date:   Tue May 19 16:43:49 2026 -0500
+
+    Agregando parcial-02: Mejoras en el diseño (CSS)
+
+[33mcommit fe11eac5a80032cdb6c303fd3985f194313e6693[m
+Author: Miguel Caballero <postaldigital.mc@gmail.com>
+Date:   Fri May 8 23:34:10 2026 -0500
+
+    Agregando Laboratorio05: Avances de la rama juan
+
+[33mcommit 0c34aed90c949444fe8ce9fd35132f063b471041[m
+Author: Miguel Caballero <postaldigital.mc@gmail.com>
+Date:   Tue May 5 19:56:08 2026 -0500
+
+    Agregando Laboratorio04: Cookies_PHP
+
+[33mcommit 767c4fdf64021b796c97811f1806347bbceca6ce[m
+Author: Miguel Caballero <postaldigital.mc@gmail.com>
+Date:   Thu Apr 23 04:18:14 2026 -0500
+
+    Agregando Practica02: Sistema PHP con Base de Datos - Modelo/Vista/Controlador
+
+[33mcommit 14fe5efa0030995eebb0e708ec26dc92c84ed148[m
+Author: Miguel Caballero <postaldigital.mc@gmail.com>
+Date:   Thu Apr 23 03:57:18 2026 -0500
+
+    Agregando Laboratorio03: Form_PHP
+
+[33mcommit 9753958dc073be2982d8197fdcbd0446d53b620b[m
+Author: Miguel Caballero <postaldigital.mc@gmail.com>
+Date:   Thu Apr 23 03:17:21 2026 -0500
+
+    Organizando estructura de carpetas/Archivos
+
+[33mcommit 01671519708093bcf00bc8f6c412c8a3e4b39c9e[m
+Author: Miguel Caballero <postaldigital.mc@gmail.com>
+Date:   Fri Apr 10 21:12:28 2026 -0500
+
+    Agregando las Asignaciones:
+    Metodo usarHabilidad() de clase Personaje.
+    Metodo agregarHabilidad() de clase Personaje.
+    Y Primera version del Index: Emulacion de Combate
+
+[33mcommit 4b845596c0b67fc0bb054163751e0b66162c078f[m
+Author: 1997-bit <132793825+1997-bit@users.noreply.github.com>
+Date:   Fri Apr 10 18:34:21 2026 -0500
+
+    fix: Corrección de typo
+
+[33mcommit 09f4a903ab6355e3d604d230bf4d9206826e523a[m
+Author: 1997-bit <132793825+1997-bit@users.noreply.github.com>
+Date:   Fri Apr 10 18:21:49 2026 -0500
+
+    refactor: reorganiza la estructura del proyecto
+
+[33mcommit a684c15ada9fbde227e120891c79c29e8e484126[m
+Author: 1997-bit <132793825+1997-bit@users.noreply.github.com>
+Date:   Thu Apr 9 14:29:00 2026 -0500
+
+    refactor(Base): cambia parámetro inventario por habilidades
+
+[33mcommit 667e35b80c05853da93aa9ce87b526570fe35731[m
+Author: 1997-bit <132793825+1997-bit@users.noreply.github.com>
+Date:   Thu Apr 9 14:04:21 2026 -0500
+
+    feat(Base): añade clase Base y ajusta estructura inicial del proyecto
+    
+    - Se crea Base.php con propiedades nombre, vida, mana e inventario.
+    - Se inicializa inventario vacío en el constructor.
+    - Se renombra archivo item.php a Habilidades.php.
+    - Se cambian nombres de archivos a PascalCase.
+    - Se vacía contenido de Enemigo.php, Personaje.php e Index.php.
+
+[33mcommit d3ae9e59aa2c9d8659ba835e5d9a1b9e5a142a13[m
+Author: 1997-bit <132793825+1997-bit@users.noreply.github.com>
+Date:   Wed Apr 8 18:43:16 2026 -0500
+
+    feat: agregar estructura inicial de DS7
+    
+    - Laboratorios 1
+    - Laboratorio 2
+    - Práctica 1
+    - Parcial 1
