@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "titulo": "El Quijote",
+        "autor": "Miguel de Cervantes",
+        "anio": 1605,
+        "genero": "Novela"
+    },
+    {
+        "id": 2,
+        "titulo": "La alegr\u00eda de PHP",
+        "autor": "Alan Forbes",
+        "anio": 2020,
+        "genero": "Programaci\u00f3n"
+    }
+]
