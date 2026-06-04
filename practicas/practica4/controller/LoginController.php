@@ -14,7 +14,7 @@ $password = trim($_POST['password'] ?? '');
 foreach ($usuarios as $user) {
     if (
         $user['usuario'] === $usuario &&
-        password_verify($password, $user['password'])  // ← corregido
+        password_verify($password, $user['password'])  
     ) {
         $_SESSION['usuario'] = $usuario;
         header("Location: ../view/Tareas.php");
