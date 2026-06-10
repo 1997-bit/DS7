@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <meta charset="UTF-8">
     <title>Crear Libro</title>
 </head>

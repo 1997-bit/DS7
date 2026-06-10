@@ -1,3 +1,23 @@
 [
-    
+    {
+        "id": 1,
+        "titulo": "la guerra de los 100 años",
+        "autor": "Eduardo III de Trastamara",
+        "añoPub": "1347",
+        "genero": "accion"
+    },
+    {
+        "id": 2,
+        "titulo": null,
+        "autor": null,
+        "añoPub": null,
+        "genero": null
+    },
+    {
+        "id": 3,
+        "titulo": null,
+        "autor": null,
+        "añoPub": null,
+        "genero": null
+    }
 ]
