@@ -2,8 +2,7 @@
 <html>
 
 <head>
-            <link rel="stylesheet" href="../assets/css/formulario.css">
-
+            <link rel="stylesheet" href="../assests/css/formulario.css">
     <title>Prueba REST</title>
 
 </head>
