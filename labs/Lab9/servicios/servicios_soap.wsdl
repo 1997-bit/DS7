@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<definitions name="InventarioServicio"
+             targetNamespace="http://localhost/DS7/labs/Lab9/veterinaria_soap/"
+             xmlns:tns="http://localhost/DS7/labs/Lab9/veterinaria_soap/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <!-- Mensajes -->
+    <message name="consultarStockRequest">
+        <part name="idProducto" type="xsd:int"/>
+    </message>
+    <message name="consultarStockResponse">
+        <part name="stock" type="xsd:int"/>
+    </message>
+
+    <!-- Operaciones disponibles -->
+    <portType name="InventarioServicioPortType">
+        <operation name="consultarStock">
+            <input message="tns:consultarStockRequest"/>
+            <output message="tns:consultarStockResponse"/>
+        </operation>
+    </portType>
+
+    <!-- Cómo se transporta -->
+    <binding name="InventarioServicioBinding" type="tns:InventarioServicioPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="consultarStock">
+            <soap:operation soapAction="consultarStock"/>
+            <input>
+                <soap:body use="literal" namespace="http://localhost/DS7/labs/Lab9/veterinaria_soap/"/>
+            </input>
+            <output>
+                <soap:body use="literal" namespace="http://localhost/DS7/labs/Lab9/veterinaria_soap/"/>
+            </output>
+        </operation>
+    </binding>
+
+    <!-- URL del servidor -->
+    <service name="InventarioServicio">
+        <port name="InventarioServicioPort" binding="tns:InventarioServicioBinding">
+<soap:address location="http://localhost/DS7/labs/Lab9/veterinaria_soap/soap_server.php"/>        </port>
+    </service>
+
+</definitions>
