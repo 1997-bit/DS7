@@ -28,7 +28,7 @@ class PedidoController
             null,
             [
                 'location' =>
-                'http://localhost/DS7/labs/Lab9/veterinaria_soap/soap_server.php',
+                'http://localhost/UTP/Des_Soft_VII/Parciales/DS7/labs/Lab9/veterinaria_soap/soap_server.php',
 
                 'uri' =>
                 'http://localhost/veterinaria_soap/'

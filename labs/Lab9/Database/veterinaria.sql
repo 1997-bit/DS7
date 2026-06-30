@@ -27,9 +27,6 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `pedidos`
 --
 
-CREATE DATABASE veterinaria
-
-
 CREATE TABLE `pedidos` (
   `id` int(11) NOT NULL,
   `producto_id` int(11) NOT NULL,

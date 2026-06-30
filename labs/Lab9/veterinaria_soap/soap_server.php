@@ -5,8 +5,7 @@ class InventarioSOAP
     private $productos = [
         1 => [
             'nombre' => 'Dog Chow',
-            'stock' => 20,
-             
+            'stock' => 20
         ],
         2 => [
             'nombre' => 'Whiskas',
@@ -29,8 +28,10 @@ class InventarioSOAP
 }
 
 $server = new SoapServer(
-    __DIR__ . '/../servicios/servicios_soap.wsdl',
-    ['uri' => 'http://localhost/DS7/labs/Lab9/veterinaria_soap/']
+    null,
+    [
+        'uri' => 'http://localhost/veterinaria_soap/'
+    ]
 );
 
 $server->setClass('InventarioSOAP');

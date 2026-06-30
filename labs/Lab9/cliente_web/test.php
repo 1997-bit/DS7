@@ -2,15 +2,13 @@
 <html>
 
 <head>
-            <link rel="stylesheet" href="../assests/css/formulario.css">
     <title>Prueba REST</title>
-
 </head>
 
 <body>
 
     <h2>Enviar Pedido</h2>
-<div class="form">
+
     <form id="pedidoForm">
 
         <label>Producto ID:</label>
@@ -28,35 +26,6 @@
         </button>
 
     </form>
-    </div>
-<hr>
-
-<h2>Consultar Stock (SOAP)</h2>
-
-<form id="stockForm">
-    <label>Producto ID:</label>
-    <input type="number" id="soap_producto_id" required>
-    <br><br>
-    <button type="submit">Consultar Stock</button>
-</form>
-
-<pre id="resultadoSOAP"></pre>
-
-<script>
-    document.getElementById('stockForm')
-        .addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const id = document.getElementById('soap_producto_id').value;
-
-            const respuesta = await fetch('../cliente_web/soap_proxy.php?id=' + id);
-            const datos = await respuesta.json();
-
-            document.getElementById('resultadoSOAP')
-                .textContent = JSON.stringify(datos, null, 2);
-        });
-</script>
-
 
     <pre id="resultado"></pre>
 
