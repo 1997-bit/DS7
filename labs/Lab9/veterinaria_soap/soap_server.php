@@ -5,7 +5,8 @@ class InventarioSOAP
     private $productos = [
         1 => [
             'nombre' => 'Dog Chow',
-            'stock' => 20
+            'stock' => 20,
+             
         ],
         2 => [
             'nombre' => 'Whiskas',
